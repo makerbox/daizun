@@ -44,7 +44,6 @@ ul {
     width: 100%;
     background: #c3e8f8; }
   .t-pre__background--layer:last-of-type {
-    background-image: url("https://daizun.local/wp-content/uploads/2022/02/dots.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right center;
@@ -96,6 +95,9 @@ ul {
   color: #bf2b2c;
   margin-top: 5rem;
   text-transform: uppercase; }
+  @media screen and (min-width: 768px) and (min-device-width: 768px) {
+    .t-pre__headline br {
+      display: none; } }
 
 .t-pre__paragraph {
   font-size: 25px;
@@ -148,7 +150,6 @@ ul {
   .t-pre__contact input, .t-pre__contact textarea {
     font-family: "Arial";
     color: #1e2c3a;
-    text-transform: uppercase;
     font-size: 33.333px;
     padding: 1rem 1.5rem;
     width: 100%;

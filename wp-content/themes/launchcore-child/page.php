@@ -7,7 +7,7 @@
 		<div class="t-pre__background--layer">
 			<!-- light blue -->
 		</div>
-		<div class="t-pre__background--layer">
+		<div class="t-pre__background--layer" style="background-image: url('<?php echo wp_get_upload_dir()['baseurl']; ?>/2022/02/dots.png');">
 			<!-- dots -->
 		</div>
 	</div>
@@ -24,7 +24,7 @@
 			Capital for property development and seed funding
 		</div>
 		<div class="t-pre__headline">
-			Full site coming soon
+			Full site <br>coming soon
 		</div>
 		<div class="t-pre__paragraph">
 			In the meantime we're very much open for business, so do get in touch.
