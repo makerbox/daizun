@@ -1,0 +1,170 @@
+$s-color__navy: #1e2c3a;
+$s-color__blue: #c3e8f8;
+$s-color__red: #bf2b2c;
+
+$s-font__medium: 500;
+$s-font__demi-bold: 600;
+$s-font__heavy: 900;
+
+
+@import url("https://use.typekit.net/xuk5sra.css");
+
+.t-pre{
+	font-size: 16px;
+	background: $s-color__navy;
+	font-family: Serenity;
+	font-weight: $s-font__medium;
+	text-aign: center;
+	position: relative;
+}
+
+.t-pre__background{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.t-pre__background--layer{
+	position: absolute;
+	&:first-of-type{
+		bottom: 0;
+		height: 38rem;
+		width: 100%;
+		background: $s-color__blue;
+	}
+	&:last-of-type{
+		background-image: url('https://daizun.local/wp-content/uploads/2022/02/dots.png');
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: right center;
+		height: 100%;
+		width: 100%;
+		top: 16rem;
+		right: 0;
+		min-width: 50rem;
+		max-width: 81rem;
+	}
+}
+
+.t-pre__foreground{
+	position: relative;
+	width: 100%;
+	z-index: 2;
+	padding: 4rem 1rem 29rem 1rem;
+}
+
+.t-pre__logo{
+	width: 100%;
+	max-width: 308px;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.t-pre__intro{
+	background: $s-color__blue;
+	font-size: 40.462px;
+	font-weight: $s-font__demi-bold;
+	padding: 4rem;
+	text-align: center;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	max-width: 49rem;
+	margin-top: 5rem;
+	width: 100%;
+	text-transform: uppercase;
+}
+
+.t-pre__headline{
+  font-size: 41.667px;
+  line-height: 1.148;
+  font-weight: $s-font__heavy;
+  text-align: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  color: $s-color__red;
+  margin-top: 5rem;
+  text-transform: uppercase;
+}
+
+.t-pre__paragraph{
+  font-size: 25px;
+  font-family: "Arial";
+  text-align: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #FFF;
+  margin-top: 3rem;
+}
+
+.t-pre__contact{
+	max-width: 31rem;
+	width: 100%;
+	transform: translateX(-50%);
+	position: relative;
+	left: 50%;
+	display: flex;
+	margin-top: 5rem;
+	font-family: "Arial";
+	color: rgb(255, 255, 255);	
+	font-size: 33.333px;
+	form p{
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		align-content: center;
+		span{
+			flex-basis: 50%;
+			&:first-of-type{
+				padding-right: 1rem;
+			}
+			&.your-message{
+				height: 9rem;
+				padding-top: 1rem;
+				flex-basis: 100%;
+			}
+		}
+		br{
+			display: none;
+		}
+	}
+	input, textarea{
+		font-family: "Arial";
+		color: $s-color__navy;
+		text-transform: uppercase;
+		font-size: 33.333px;
+		padding: 1rem 1.5rem;
+		width: 100%;
+		height: 100%;
+		border: none;
+		&[type="submit"]{
+			color: #FFF;
+			border: none;
+			background: $s-color__navy;
+			display: inline-block;
+			width: auto;
+			margin-top: 1rem;
+			cursor: pointer;
+		}
+	}
+	::placeholder{
+		font-size: 33.333px;
+		font-family: "Arial";
+		color: $s-color__navy;
+		text-transform: uppercase;
+	}
+}
+
+.t-pre__footer{
+	background: $s-color__navy;
+	font-family: Serenity;
+	font-weight: $s-font__medium;
+	text-align: center;
+	padding: 1rem;
+	color: #FFF;
+}
