@@ -2,7 +2,7 @@
 
 // 1-settings	-----------variables and mixins e.g. font sizes
 @import './1-settings/responsive';
-// @import './1-settings/colors';
+@import './1-settings/colors';
 @import './1-settings/fonts';
 @import './1-settings/images';
 // @import './1-settings/margins';
@@ -44,4 +44,4 @@
 // // 8-vendor	-----------third party styles
 
 // // 9-overlords	-----------overrides all other styles
-// @import './9-overlords/thg';
+@import './9-overlords/wpcf7';

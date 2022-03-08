@@ -1,7 +1,11 @@
 //SCSS - settings > fonts
 
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+$s-font__medium: 500;
+$s-font__demi-bold: 600;
+$s-font__heavy: 900;
 
+
+@import url("https://use.typekit.net/xuk5sra.css");
 
 html, body{
 	// color: $s-color__black;
