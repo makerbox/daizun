@@ -1,15 +1,18 @@
 //SCSS - settings > fonts
 
-$s-font__medium: 500;
-$s-font__demi-bold: 600;
-$s-font__heavy: 900;
+$s-font__light: 300;
+$s-font__regular: 400;
+$s-font__demi-bold: 600; // also semi-bold
+$s-font__bold: 700;
+$s-font__extra-bold: 800;
 
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,800&display=swap');
 @import url("https://use.typekit.net/xuk5sra.css");
 
 html, body{
-	// color: $s-color__black;
 	font-size: 16px;
-	// font-family: 'Rajdhani', sans-serif;
-	// letter-spacing: 1.4px;
+	font-family: 'Open Sans', sans-serif;
 }
+
+// ----------- for those couple of headings (light and demi-bold)
+// font-family: serenity, sans-serif;
