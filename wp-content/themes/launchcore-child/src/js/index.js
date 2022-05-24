@@ -9,3 +9,6 @@ import "./components/navbar.js";
 //templates
 
 //globals
+
+//blocks
+import "./blocks/lead-stats.js";

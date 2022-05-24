@@ -34,9 +34,9 @@ registerBlockType( 'fbf/lead-stat', {
 		__( 'fbf' ),
 	],
 	attributes: {
-		headline: {
+		description: {
 			type: "string",
-			default: "headline"
+			default: "description"
 		},
 		stat: {
 			type: "string",
@@ -59,8 +59,8 @@ registerBlockType( 'fbf/lead-stat', {
 	edit: ( {attributes, setAttributes} ) => {
 		
 
-		const headlineChange = (newText) => {
-			setAttributes({ headline: newText });			
+		const descriptionChange = (newText) => {
+			setAttributes({ description: newText });			
 		};
 		const statChange = (newText) => {
 			setAttributes({ stat: newText });			
@@ -69,16 +69,16 @@ registerBlockType( 'fbf/lead-stat', {
 		return (
 			<div className="b-lead-stat">
 				<div className="b-lead-stat__inner">
-					<div className="b-lead-stat__headline">
-						<RichText
-							onChange={headlineChange}
-							value={attributes.headline}
-						/>
-					</div>
 					<div className="b-lead-stat__stat">
 						<RichText
 							onChange={statChange}
 							value={attributes.stat}
+						/>
+					</div>
+					<div className="b-lead-stat__description">
+						<RichText
+							onChange={descriptionChange}
+							value={attributes.description}
 						/>
 					</div>
 				</div>				
@@ -101,14 +101,14 @@ registerBlockType( 'fbf/lead-stat', {
 		return (
 			<div className="b-lead-stat">
 				<div className="b-lead-stat__inner">
-					<div className="b-lead-stat__headline">
-						<RichText.Content
-							value={attributes.headline}
-						/>
-					</div>
 					<div className="b-lead-stat__stat">
 						<RichText.Content
 							value={attributes.stat}
+						/>
+					</div>
+					<div className="b-lead-stat__description">
+						<RichText.Content
+							value={attributes.description}
 						/>
 					</div>
 				</div>
