@@ -7,6 +7,13 @@
 	&.is-visible{
 		opacity: 1;
 	}
+	@include s-responsive__mobile-up{
+		position: relative;
+		left: auto;
+		transform: none;
+		opacity: 1;
+		flex-basis: 33%;
+	}
 }
 
 .b-lead-stat__inner{

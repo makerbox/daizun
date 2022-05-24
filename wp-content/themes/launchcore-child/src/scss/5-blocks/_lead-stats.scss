@@ -1,9 +1,10 @@
 .b-lead-stats{
 	position: relative;
 	width: 100%;
-	height: 33rem;
+	// height: 33rem;
+	height: 100vh;
 	@include s-responsive__mobile-up{
-		height: 59.5rem;
+		// height: 59.5rem;
 	}
 }
 
@@ -65,4 +66,10 @@
 	background: rgba(121, 228, 246, .6);
 	width: 100%;
 	height: 7.5rem;
+	@include s-responsive__mobile-up{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 3rem;
+	}
 }

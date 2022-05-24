@@ -25,3 +25,8 @@ $s-breakpoint__desktop: 1440px;
 	}
 }
 
+@mixin s-responsive__max{
+	max-width: 1140px;
+	left: 50%;
+	transform: translateX(-50%);
+}
