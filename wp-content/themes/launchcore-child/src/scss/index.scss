@@ -5,7 +5,7 @@
 @import './1-settings/colors';
 @import './1-settings/fonts';
 @import './1-settings/images';
-// @import './1-settings/margins';
+@import './1-settings/margins';
 
 // // 2-utilities
 @import './2-utilities/center-middle';
@@ -16,27 +16,18 @@
 @import './3-elements/lists';
 // @import './3-elements/body';
 
-// // 4-objects	-----------small pieces that make up components e.g. menu item
+// // 4-components	-----------reusable object groups e.g. navbar
+// @import './4-components/navbar';
 
-// // 5-components	-----------reusable object groups e.g. navbar
-// @import './5-components/navbar';
-// @import './5-components/banner';
-// @import './5-components/numbered-list';
-// @import './5-components/stats';
-// @import './5-components/stat';
-// @import './5-components/image-and-text';
-// @import './5-components/image-under-text';
-// @import './5-components/overlay';
-// @import './5-components/overhang';
-// @import './5-components/service-list';
-// @import './5-components/service';
-// @import './5-components/team';
-// @import './5-components/member';
-// @import './5-components/contact';
-// @import './5-components/generic-text';
+
+// // 5-blocks	----------- gutenberg blocks
+@import './5-blocks/lead-stats';
+@import './5-blocks/lead-stat';
 
 // // 6-parts	-----------template parts e.g. header
-// @import './6-parts/footer';
+@import './6-parts/header';
+@import './6-parts/footer';
+
 
 // // 7-templates	-----------made up of many sections e.g. front-page
 // @import './7-templates/pre';

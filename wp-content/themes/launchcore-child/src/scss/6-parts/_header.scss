@@ -1,0 +1,50 @@
+.p-header{
+	width: 100%;
+	padding: 1rem $s-padding__mobile;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9;
+}
+
+.p-header__inner{
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.p-header__menu--menu{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9;
+	display: none;
+	.is-open &{
+		display: block;
+	}
+}
+
+.p-header__menu--open{
+	display: block;
+	.is-open &{
+		display: none;
+	}
+}
+
+.p-header__menu--close{
+	display: none;
+	.is-open &{
+		display: block;
+	}
+}
+
+.p-header__logo{
+	height: 4rem;
+	img{
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: contain;
+	}
+}

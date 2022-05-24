@@ -1,27 +1,19 @@
 /**
- * BLOCK: stats
+ * BLOCK: lead-stat
  *
  * Registering a basic block with Gutenberg.
  * Simple block, renders and saves the same content without any interactivity.
  */
 
-//  Import CSS.
-import './editor.scss';
-import './style.scss';
-
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
-
-const {RichText, InnerBlocks} = wp.blockEditor;
-
-const ALLOWED_BLOCKS = ['cgb/block-stat'];
-
-// const { RichText, MediaUpload, InspectorControls } = wp.blockEditor;
-// const { Panel, PanelBody, PanelRow, SelectControl, CheckboxControl } = wp.components;
-// const { select } = wp.data; // get page data
+const { InspectorControls, RichText, MediaUpload, InnerBlocks } = wp.blockEditor;
+const { Panel, PanelBody, PanelRow } = wp.components;
+const { select, dispatch } = wp.data;
+import { useState } from '@wordpress/element';
 
 /**
- * Register: aa Gutenberg Block.
+ * Register a Gutenberg Block.
  *
  * Registers a new block provided a unique name and an object defining its
  * behavior. Once registered, the block is made editor as an option to any
@@ -33,20 +25,26 @@ const ALLOWED_BLOCKS = ['cgb/block-stat'];
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'cgb/block-stats', {
+registerBlockType( 'fbf/lead-stat', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'stats' ), // Block title.
-	icon: 'shield', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+	title: __( 'lead-stat' ), // Block title.
+	icon: 'images-alt', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
-		__( 'stats' ),
+		__( 'fbf' ),
 	],
 	attributes: {
 		headline: {
-			type: 'string',
-			default: 'headline'
+			type: "string",
+			default: "headline"
+		},
+		stat: {
+			type: "string",
+			default: "XXXXXX"
 		}
 	},
+	parent: ['fbf/lead-stats'],
+
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
 	 * This represents what the editor will render when the block is used.
@@ -59,27 +57,32 @@ registerBlockType( 'cgb/block-stats', {
 	 * @returns {Mixed} JSX Component.
 	 */
 	edit: ( {attributes, setAttributes} ) => {
-		const changeHeadline = (newHeadline) => {
-			setAttributes({
-				headline: newHeadline
-			});
+		
+
+		const headlineChange = (newText) => {
+			setAttributes({ headline: newText });			
 		};
-		// Creates a <p class='wp-block-cgb-block-daizun-blocks'></p>.
+		const statChange = (newText) => {
+			setAttributes({ stat: newText });			
+		};
+
 		return (
-			<div className="c-stats">
-				<div className="c-stats__inner">
-					<div className="c-stats__headline">
+			<div className="b-lead-stat">
+				<div className="b-lead-stat__inner">
+					<div className="b-lead-stat__headline">
 						<RichText
-							className="c-stats__headline--richtext"
-							onChange={changeHeadline}
+							onChange={headlineChange}
 							value={attributes.headline}
 						/>
 					</div>
-					<div className="c-stats__stats">
-						<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS } />
+					<div className="b-lead-stat__stat">
+						<RichText
+							onChange={statChange}
+							value={attributes.stat}
+						/>
 					</div>
-				</div>
-			</div>
+				</div>				
+			</div>			
 		);
 	},
 
@@ -94,18 +97,19 @@ registerBlockType( 'cgb/block-stats', {
 	 * @param {Object} props Props.
 	 * @returns {Mixed} JSX Frontend HTML.
 	 */
-	save: ( {attributes} ) => {
+	save: ( {attributes} ) => {	
 		return (
-			<div className="c-stats">
-				<div className="c-stats__inner">
-					<div className="c-stats__headline">
+			<div className="b-lead-stat">
+				<div className="b-lead-stat__inner">
+					<div className="b-lead-stat__headline">
 						<RichText.Content
-							className="c-stats__headline--richtext"
 							value={attributes.headline}
 						/>
 					</div>
-					<div className="c-stats__stats">
-						<InnerBlocks.Content />
+					<div className="b-lead-stat__stat">
+						<RichText.Content
+							value={attributes.stat}
+						/>
 					</div>
 				</div>
 			</div>
