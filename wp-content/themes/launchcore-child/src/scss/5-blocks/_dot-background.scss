@@ -1,0 +1,49 @@
+.b-dot-background{
+	display: block;
+	width: 100%;
+	position: relative;
+	background: #D7D7D7;
+}
+
+.b-dot-background__background{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	img{
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: cover;
+	}
+}
+
+.b-dot-background__foreground{
+	position: relative;
+}
+
+.b-dot-background__inner{
+
+}
+
+.b-dot-background__headline{
+	font-size: 3rem;
+	color: #1E2C3A;
+	font-weight: 100;
+	margin-bottom: 2rem;
+	@include s-responsive__mobile-up{
+		font-size: 4rem;
+		max-width: 22rem;
+	}
+}
+
+.b-dot-background__paragraph{
+	font-size: 12px;
+	line-height: 1.75;
+	color: #1E2C3A;
+	@include s-responsive__mobile-up{
+		font-size: 1rem;
+		line-height: 1.5;
+	}
+}
