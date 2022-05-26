@@ -1,5 +1,5 @@
 /**
- * BLOCK: lead-stat
+ * BLOCK: story
  *
  * Registering a basic block with Gutenberg.
  * Simple block, renders and saves the same content without any interactivity.
@@ -25,25 +25,30 @@ import { useState } from '@wordpress/element';
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'dz/lead-stat', {
+registerBlockType( 'dz/story', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'lead-stat' ), // Block title.
+	title: __( 'story' ), // Block title.
 	icon: 'images-alt', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
 		__( 'dz' ),
 	],
 	attributes: {
-		description: {
-			type: "string",
-			default: "description"
+		imgURL: {
+			type: "string"
 		},
-		stat: {
+		imgID: {
+			type: "string"
+		},
+		headline: {
 			type: "string",
-			default: "XXXXXX"
+			default: "Our Story So Far"
+		},
+		paragraph: {
+			type: "string",
+			default: "paragraph"
 		}
 	},
-	parent: ['dz/lead-stats'],
 
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -59,29 +64,60 @@ registerBlockType( 'dz/lead-stat', {
 	edit: ( {attributes, setAttributes} ) => {
 		
 
-		const descriptionChange = (newText) => {
-			setAttributes({ description: newText });			
+		const headlineChange = (newText) => {
+			setAttributes({ headline: newText });			
 		};
-		const statChange = (newText) => {
-			setAttributes({ stat: newText });			
+		const paragraphChange = (newText) => {
+			setAttributes({ paragraph: newText });			
 		};
-
+		const imgChange = ( newImg ) => {
+			let imgURL = newImg.sizes.full.url;
+			let imgID = newImg.id.toString();
+		    setAttributes({
+		        imgURL: imgURL,
+		        imgID: imgID
+		    })
+		};
 		return (
-			<div className="b-lead-stat">
-				<div className="b-lead-stat__inner">
-					<div className="b-lead-stat__stat">
-						<RichText
-							onChange={statChange}
-							value={attributes.stat}
-						/>
+			<div className="b-story">
+				<div className="b-story__inner">
+					<div className="b-story__image">
+						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
 					</div>
-					<div className="b-lead-stat__description">
-						<RichText
-							onChange={descriptionChange}
-							value={attributes.description}
-						/>
+					<div className="b-story__text">
+						<div className="b-story__headline">
+							<RichText
+								onChange={headlineChange}
+								value={attributes.headline}
+							/>
+						</div>
+						<div className="b-story__paragraph">
+							<RichText
+								onChange={paragraphChange}
+								value={attributes.paragraph}
+							/>
+						</div>
 					</div>
-				</div>				
+				</div>
+				<InspectorControls>
+					<hr style={{border:'2px solid black'}}/>
+					<Panel className="panel-group" header="Image">					
+						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
+						<MediaUpload 
+			                onSelect={imgChange}
+			                render={
+			                	({open}) => {
+				                	return(
+				                		<button onClick={ open }>
+				                			Choose image..
+				                		</button>
+				                	)
+					            }
+					        }
+			            />
+					</Panel>
+					<hr style={{border:'2px solid black'}}/>
+				</InspectorControls>				
 			</div>			
 		);
 	},
@@ -99,17 +135,22 @@ registerBlockType( 'dz/lead-stat', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-lead-stat">
-				<div className="b-lead-stat__inner">
-					<div className="b-lead-stat__stat">
-						<RichText.Content
-							value={attributes.stat}
-						/>
+			<div className="b-story">
+				<div className="b-story__inner">
+					<div className="b-story__image">
+						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
 					</div>
-					<div className="b-lead-stat__description">
-						<RichText.Content
-							value={attributes.description}
-						/>
+					<div className="b-story__text">
+						<div className="b-story__headline">
+							<RichText.Content
+								value={attributes.headline}
+							/>
+						</div>
+						<div className="b-story__paragraph">
+							<RichText.Content
+								value={attributes.paragraph}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -11,3 +11,5 @@
 
 import './lead-stats/block.js';
 import './lead-stat/block.js';
+
+import './story/block.js';
