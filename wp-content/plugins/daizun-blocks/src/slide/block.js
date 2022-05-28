@@ -1,5 +1,5 @@
 /**
- * BLOCK: lead-stat
+ * BLOCK: slide
  *
  * Registering a basic block with Gutenberg.
  * Simple block, renders and saves the same content without any interactivity.
@@ -25,25 +25,29 @@ import { useState } from '@wordpress/element';
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'dz/lead-stat', {
+registerBlockType( 'dz/slide', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'lead-stat' ), // Block title.
+	title: __( 'slide' ), // Block title.
 	icon: 'images-alt', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
 		__( 'dz' ),
 	],
 	attributes: {
-		description: {
+		slideNumber: {
 			type: "string",
-			default: "description"
+			default: "1"
 		},
-		stat: {
+		headline: {
 			type: "string",
-			default: "XXXXXX"
+			default: "headline"
+		},
+		paragraph: {
+			type: "string",
+			default: "paragraph"
 		}
 	},
-	parent: ['dz/lead-stats'],
+	parent: ['dz/slider'],
 
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -59,26 +63,31 @@ registerBlockType( 'dz/lead-stat', {
 	edit: ( {attributes, setAttributes} ) => {
 		
 
-		const descriptionChange = (newText) => {
-			setAttributes({ description: newText });			
+		const slideNumberChange = (newText) => {
+			setAttributes({ slideNumber: newText });			
 		};
-		const statChange = (newText) => {
-			setAttributes({ stat: newText });			
+		const headlineChange = (newText) => {
+			setAttributes({ headline: newText });			
+		};
+		const paragraphChange = (newText) => {
+			setAttributes({ paragraph: newText });			
 		};
 
 		return (
-			<div className="b-lead-stat">
-				<div className="b-lead-stat__inner">
-					<div className="b-lead-stat__stat">
-						<RichText
-							onChange={statChange}
-							value={attributes.stat}
-						/>
+			<div className="b-slide">
+				<div className="b-slide__inner">
+					<div className="b-slide__headline">
+						<span className="b-slide__number">
+							<RichText
+								onChange={headlineChange}
+								value={attributes.stat}
+							/>
+						</span>
 					</div>
-					<div className="b-lead-stat__description">
+					<div className="b-slide__paragraph">
 						<RichText
-							onChange={descriptionChange}
-							value={attributes.description}
+							onChange={paragraphChange}
+							value={attributes.paragraph}
 						/>
 					</div>
 				</div>				
@@ -99,14 +108,14 @@ registerBlockType( 'dz/lead-stat', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-lead-stat">
-				<div className="b-lead-stat__inner">
-					<div className="b-lead-stat__stat">
+			<div className="b-slide">
+				<div className="b-slide__inner">
+					<div className="b-slide__stat">
 						<RichText.Content
 							value={attributes.stat}
 						/>
 					</div>
-					<div className="b-lead-stat__description">
+					<div className="b-slide__description">
 						<RichText.Content
 							value={attributes.description}
 						/>

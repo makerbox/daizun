@@ -1,5 +1,5 @@
 /**
- * BLOCK: lead-stats
+ * BLOCK: slider
  *
  * Registering a basic block with Gutenberg.
  * Simple block, renders and saves the same content without any interactivity.
@@ -7,12 +7,12 @@
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
-const { InspectorControls, RichText, MediaUpload, InnerBlocks } = wp.blockEditor;
-const { Panel, PanelBody, PanelRow } = wp.components;
+const { InspectorControls, RichText, InnerBlocks } = wp.blockEditor;
+const { Panel, PanelBody, SelectControl, PanelRow } = wp.components;
 const { select, dispatch } = wp.data;
 import { useState } from '@wordpress/element';
 
-const ALLOWED_BLOCKS = ['dz/lead-stat'];
+const ALLOWED_BLOCKS = ['dz/slide'];
 /**
  * Register a Gutenberg Block.
  *
@@ -26,9 +26,9 @@ const ALLOWED_BLOCKS = ['dz/lead-stat'];
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'dz/lead-stats', {
+registerBlockType( 'dz/slider', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'lead-stats' ), // Block title.
+	title: __( 'slider' ), // Block title.
 	icon: 'images-alt', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
@@ -39,11 +39,13 @@ registerBlockType( 'dz/lead-stats', {
 			type: "string",
 			default: "headline"
 		},
-		backgroundURL: {
-			type: "string"
+		colorScheme: {
+			type: "string",
+			default: "dark"
 		},
-		backgroundID: {
-			type: "string"
+		ctaText: {
+			type: "string",
+			default: "Start your application here"
 		}
 	},
 	/**
@@ -64,50 +66,62 @@ registerBlockType( 'dz/lead-stats', {
 			setAttributes({ headline: newText });			
 		};
 
-		const backgroundChange = ( newImg ) => {
-			let backgroundURL = newImg.sizes.full.url;
-			let backgroundID = newImg.id.toString();
-		    setAttributes({
-		        backgroundURL: backgroundURL,
-		        backgroundID: backgroundID
-		    })
-		};	
+		const ctaTextChange = (newText) => {
+			setAttributes({ ctaText: newText });			
+		};
+
+		const colorSchemeChange = (newText) => {
+			setAttributes({ colorScheme: newText })
+		};
+
 
 		return (
-			<div className="b-lead-stats">
-				<div className="b-lead-stats__background">
-					<img src={attributes.backgroundURL} className={`wp-image-${attributes.backgroundID}`} />
-				</div>
-				<div className="b-lead-stats__foreground">
-					<div className="b-lead-stats__inner">
-						<h1 className="b-lead-stats__headline">
-							<RichText
-								onChange={headlineChange}
-								value={attributes.headline}
-							/>
-						</h1>
-						<div className="b-lead-stats__lead-stats">
-							<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
+			<div className={`b-slider b-slider__color--${attributes.colorScheme}`>
+				<div className="b-slider__inner">
+					<h2 className="b-slider__headline">
+						<RichText
+							onChange={headlineChange}
+							value={attributes.headline}
+						/>
+					</h2>
+					<div className="b-slider__slides">
+						<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
+					</div>
+					<div data-slider-dots className="b-slider__dots">
+					</div>
+					<div className="b-slider__controls">
+						<div data-slider-prev className="b-slider__prev">
+							<svg xmlns="http://www.w3.org/2000/svg" width="53.334" height="105.254" viewBox="0 0 53.334 105.254">
+							  <path id="Path_369" data-name="Path 369" d="M125.156,1398.5l-52.273,52.273,52.273,52.273" transform="translate(-72.176 -1398.146)" fill="none" stroke="#fcf7f7" stroke-width="1"/>
+							</svg>
+						</div>
+						<div data-slider-next className="b-slider__next">
+							<svg xmlns="http://www.w3.org/2000/svg" width="53.334" height="105.254" viewBox="0 0 53.334 105.254">
+							  <path id="Path_370" data-name="Path 370" d="M125.156,1398.5l-52.273,52.273,52.273,52.273" transform="translate(125.51 1503.4) rotate(180)" fill="none" stroke="#fcf7f7" stroke-width="1"/>
+							</svg>
 						</div>
 					</div>
+					<div className="b-slider__cta">
+						<RichText
+							onChange={ctaChange}
+							value={attributes.cta}
+						/>
+					</div>
 				</div>
-
 				<InspectorControls>
 					<hr style={{border:'2px solid black'}}/>
-					<Panel className="panel-group" header="Background">					
-						<img src={attributes.backgroundURL} className={`wp-image-${attributes.backgroundID}`} />
-						<MediaUpload 
-			                onSelect={backgroundChange}
-			                render={
-			                	({open}) => {
-				                	return(
-				                		<button onClick={ open }>
-				                			Background image..
-				                		</button>
-				                	)
-					            }
-					        }
-			            />
+					<Panel className="panel-group" header="Colour Scheme">					
+						<SelectControl
+							label="Colour scheme"
+							value={attributes.colorScheme}
+							options={
+								[
+									{ label: "Dark", value: "dark" },
+									{ label: "Light", value: "light" }
+								]
+							}
+							onChange={colorSchemeChange}
+						/>
 					</Panel>
 					<hr style={{border:'2px solid black'}}/>
 				</InspectorControls>			
@@ -128,20 +142,35 @@ registerBlockType( 'dz/lead-stats', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-lead-stats">
-				<div className="b-lead-stats__background">
-					<img src={attributes.backgroundURL} className={`wp-image-${attributes.backgroundID}`} />
-				</div>
-				<div className="b-lead-stats__foreground">
-					<div className="b-lead-stats__inner">
-						<h1 className="b-lead-stats__headline">
-							<RichText.Content
-								value={attributes.headline}
-							/>
-						</h1>
-						<div className="b-lead-stats__lead-stats">
-							<InnerBlocks.Content />
+			<div className={`b-slider b-slider__color--${attributes.colorScheme}`>
+				<div className="b-slider__inner">
+					<h2 className="b-slider__headline">
+						<RichText.Content
+							value={attributes.headline}
+						/>
+					</h2>
+					<div className="b-slider__slides">
+						<InnerBlocks.Content />
+					</div>
+					<div data-slider-dots className="b-slider__dots">
+					</div>
+					<div className="b-slider__controls">
+						<div data-slider-prev className="b-slider__prev">
+							<svg xmlns="http://www.w3.org/2000/svg" width="53.334" height="105.254" viewBox="0 0 53.334 105.254">
+							  <path id="Path_369" data-name="Path 369" d="M125.156,1398.5l-52.273,52.273,52.273,52.273" transform="translate(-72.176 -1398.146)" fill="none" stroke="#fcf7f7" stroke-width="1"/>
+							</svg>
 						</div>
+						<div data-slider-next className="b-slider__next">
+							<svg xmlns="http://www.w3.org/2000/svg" width="53.334" height="105.254" viewBox="0 0 53.334 105.254">
+							  <path id="Path_370" data-name="Path 370" d="M125.156,1398.5l-52.273,52.273,52.273,52.273" transform="translate(125.51 1503.4) rotate(180)" fill="none" stroke="#fcf7f7" stroke-width="1"/>
+							</svg>
+						</div>
+					</div>
+					<div className="b-slider__cta">
+						<RichText
+							onChange={ctaChange}
+							value={attributes.cta}
+						/>
 					</div>
 				</div>
 			</div>
