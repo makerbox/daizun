@@ -24,7 +24,27 @@
 }
 
 .b-dot-background__inner{
-
+	padding: $s-padding__mobile;
+	text-align: center;
+	position: relative;
+	display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+	&:after{
+		margin-top: $s-padding__mobile;
+		display: block;
+		content: '';
+		width: 3.5rem;
+		height: 4px;
+		background: #1E2C3A;
+	}
+	@include s-responsive__mobile-up{
+		padding: 4.5rem 0;
+		max-width: 40rem;
+		left: 50%;
+		transform: translateX(-50%);
+	}
 }
 
 .b-dot-background__headline{
@@ -34,14 +54,17 @@
 	margin-bottom: 2rem;
 	@include s-responsive__mobile-up{
 		font-size: 4rem;
-		max-width: 22rem;
 	}
 }
 
 .b-dot-background__paragraph{
-	font-size: 12px;
+	font-size: 1rem;
 	line-height: 1.75;
 	color: #1E2C3A;
+	a{
+		color: #1E2C3A;
+		font-weight: 700;
+	}
 	@include s-responsive__mobile-up{
 		font-size: 1rem;
 		line-height: 1.5;
