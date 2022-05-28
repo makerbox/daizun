@@ -11,5 +11,24 @@
 }
 
 .b-slider__inner{
+	width: 100%;
+	padding: 5rem $s-padding__mobile;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 
+.b-slider__headline{
+	font-size: 3rem;
+	font-weight: 100;
+	margin-bottom: 2rem;
+	.b-slider__color--dark &{
+		color: #FFF;
+	}
+	.b-slider__color--light &{
+		color: #1E2C3A;
+	}
+	@include s-responsive__mobile-up{
+		font-size: 4rem;
+	}
 }
