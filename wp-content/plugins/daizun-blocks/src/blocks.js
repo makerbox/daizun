@@ -15,3 +15,6 @@ import './lead-stat/block.js';
 import './story/block.js';
 
 import './dot-background/block.js';
+
+import './slider/block.js';
+import './slide/block.js';

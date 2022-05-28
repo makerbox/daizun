@@ -76,7 +76,7 @@ registerBlockType( 'dz/slider', {
 
 
 		return (
-			<div className={`b-slider b-slider__color--${attributes.colorScheme}`>
+			<div className={`b-slider b-slider__color--${attributes.colorScheme}`}>
 				<div className="b-slider__inner">
 					<h2 className="b-slider__headline">
 						<RichText
@@ -103,8 +103,8 @@ registerBlockType( 'dz/slider', {
 					</div>
 					<div className="b-slider__cta">
 						<RichText
-							onChange={ctaChange}
-							value={attributes.cta}
+							onChange={ctaTextChange}
+							value={attributes.ctaText}
 						/>
 					</div>
 				</div>
@@ -142,7 +142,7 @@ registerBlockType( 'dz/slider', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className={`b-slider b-slider__color--${attributes.colorScheme}`>
+			<div className={`b-slider b-slider__color--${attributes.colorScheme}`}>
 				<div className="b-slider__inner">
 					<h2 className="b-slider__headline">
 						<RichText.Content
@@ -167,9 +167,8 @@ registerBlockType( 'dz/slider', {
 						</div>
 					</div>
 					<div className="b-slider__cta">
-						<RichText
-							onChange={ctaChange}
-							value={attributes.cta}
+						<RichText.Content
+							value={attributes.ctaText}
 						/>
 					</div>
 				</div>

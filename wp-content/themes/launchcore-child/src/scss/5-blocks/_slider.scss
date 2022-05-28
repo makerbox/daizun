@@ -1,0 +1,15 @@
+.b-slider{
+	position: relative;
+	width: 100%;
+	display: block;
+	&.b-slider__color--dark{
+		background: #1E2C3A;
+	}
+	&.b-slider__color--light{
+		background: #D7D7D7;
+	}
+}
+
+.b-slider__inner{
+
+}

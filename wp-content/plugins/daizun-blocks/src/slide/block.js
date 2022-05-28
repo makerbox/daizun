@@ -79,10 +79,14 @@ registerBlockType( 'dz/slide', {
 					<div className="b-slide__headline">
 						<span className="b-slide__number">
 							<RichText
-								onChange={headlineChange}
-								value={attributes.stat}
+								onChange={slideNumberChange}
+								value={attributes.slideNumber}
 							/>
 						</span>
+						<RichText
+							onChange={headlineChange}
+							value={attributes.headline}
+						/>
 					</div>
 					<div className="b-slide__paragraph">
 						<RichText
@@ -110,17 +114,25 @@ registerBlockType( 'dz/slide', {
 		return (
 			<div className="b-slide">
 				<div className="b-slide__inner">
-					<div className="b-slide__stat">
-						<RichText.Content
-							value={attributes.stat}
+					<div className="b-slide__headline">
+						<span className="b-slide__number">
+							<RichText
+								onChange={slideNumberChange}
+								value={attributes.slideNumber}
+							/>
+						</span>
+						<RichText
+							onChange={headlineChange}
+							value={attributes.headline}
 						/>
 					</div>
-					<div className="b-slide__description">
-						<RichText.Content
-							value={attributes.description}
+					<div className="b-slide__paragraph">
+						<RichText
+							onChange={paragraphChange}
+							value={attributes.paragraph}
 						/>
 					</div>
-				</div>
+				</div>	
 			</div>
 		);
 	},
