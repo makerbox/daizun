@@ -98,3 +98,22 @@
 	}
 	
 }
+
+.b-slider__cta{
+	width: 100%;
+	font-size: 21px;
+	color: #FFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem 0;
+	strong{
+		margin-left: .5rem;
+	}
+	.b-slider__color--dark &{
+		background: #D00D1C;
+	}
+	.b-slider__color--light &{
+		background: #5D5D5D;
+	}
+}

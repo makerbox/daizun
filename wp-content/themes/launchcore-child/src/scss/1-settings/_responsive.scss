@@ -30,3 +30,7 @@ $s-breakpoint__desktop: 1440px;
 	left: 50%;
 	transform: translateX(-50%);
 }
+
+html{
+	scroll-behavior: smooth;
+}

@@ -9,6 +9,7 @@ import "./components/navbar.js";
 //templates
 
 //globals
+import "./globals/scroll.js";
 
 //blocks
 import "./blocks/lead-stats.js";

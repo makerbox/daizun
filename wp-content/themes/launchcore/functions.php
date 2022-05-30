@@ -130,11 +130,7 @@ add_action('wp_head', 'blog_favicon');
 // }
 // add_action('wp_enqueue_scripts', 'get_bootstrap');
 
-// get Green Sock
-// function get_greensock(){
-// 	wp_enqueue_script('greensock', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js');
-// }
-// add_action('wp_enqueue_scripts', 'get_greensock');
+
 
 // get Slick
 // function get_slick(){
