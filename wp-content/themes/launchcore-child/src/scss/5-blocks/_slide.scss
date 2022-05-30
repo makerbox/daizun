@@ -1,18 +1,24 @@
 
 .b-slide{
 	position: absolute;
-	left: 100%;
-	transition: left .25s;
+	left: 0;
+	transition: opacity .25s;
 	top: 0;
 	width: 100%;
 	opacity: 0;
-	padding: 0 5rem;
+	padding: 0 3rem;
 	display: flex;
 	text-align: center;
 	&.is-current{
-		left: 0;
 		opacity: 1;
 	}
+	&.is-tallest{
+		position: relative;
+	}
+}
+
+.b-slide__inner{
+	width: 100%;
 }
 
 .b-slide__headline{
@@ -40,6 +46,8 @@
 }
 
 .b-slide__paragraph{
+	line-height: 1.5;
+	font-size: 1rem;
 	.b-slider__color--dark &{
 		color: #FFF;
 	}

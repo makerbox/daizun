@@ -13,13 +13,22 @@ $(document).ready(function(){
 		// reveal the first slide
 		$(mySlides[0]).addClass('is-current');
 
-		//give each slide an index
+		//give each slide an index and get the tallest one
+		let tallest = 0;
 		mySlides.each(function(index){
-			$(this).attr('data-index', index);
+			let self = $(this);
+			self.attr('data-index', index);
+			let myHeight = self.height();
+			if(myHeight > tallest){
+				tallest = myHeight;
+				mySlides.removeClass('is-tallest');
+				self.addClass('is-tallest');
+			}
 		});
 
 		// fill in the appropriate dot
 		dotCurrent();
+
 	})
 
 	$(document).on('click touchend', '[data-slider-next]', function(e){

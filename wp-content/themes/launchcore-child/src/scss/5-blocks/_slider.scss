@@ -69,7 +69,11 @@
 	position: relative;
 	width: 100%;
 	overflow: hidden;
-	height: 14rem;
+	margin-bottom: 2rem;
+}
+
+.b-slider__dots{
+	margin-bottom: 2.5rem;
 }
 
 .b-slider__dot{
