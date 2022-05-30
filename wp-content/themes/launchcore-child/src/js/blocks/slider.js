@@ -37,14 +37,14 @@ $(document).ready(function(){
 		
 		let self = $(this);
 		let mySlider = self.closest('.b-slider');
-
+		let mySlides = mySlider.find('.b-slide');
 		let currentSlide = mySlider.find('.is-current');
-
-		let nextSlide = currentSlide.next();
-		if(nextSlide.length){
-			nextSlide.addClass('is-current');
+		let currentIndex = parseInt(currentSlide.attr('data-index'));
+		let nextIndex = currentIndex + 1;
+		if(currentIndex == (mySlides.length - 1)){
+			$(mySlides[0]).addClass('is-current');
 		}else{
-			$(mySlider.find('.b-slide')[0]).addClass('is-current');
+			$(mySlides[nextIndex]).addClass('is-current');			
 		};
 		currentSlide.removeClass('is-current');
 		dotCurrent();
@@ -57,15 +57,13 @@ $(document).ready(function(){
 		let self = $(this);
 		let mySlider = self.closest('.b-slider');
 		let mySlides = mySlider.find('.b-slide');
-		let mySlidesCount = mySlides.length;
-		console.log(mySlidesCount);
 		let currentSlide = mySlider.find('.is-current');
-
-		let prevSlide = currentSlide.prev();
-		if(prevSlide.length){
-			prevSlide.addClass('is-current');
+		let currentIndex = parseInt(currentSlide.attr('data-index'));
+		let nextIndex = currentIndex - 1;
+		if(currentIndex == 0){
+			$(mySlides[mySlides.length - 1]).addClass('is-current');
 		}else{
-			$(mySlides[mySlidesCount - 1]).addClass('is-current');
+			$(mySlides[nextIndex]).addClass('is-current');			
 		};
 		currentSlide.removeClass('is-current');
 		dotCurrent();
@@ -76,7 +74,7 @@ $(document).ready(function(){
 		$(document).find('.b-slider').each(function(){
 			let thisSlider = $(this);
 			let currentIndex = thisSlider.find('.is-current').attr('data-index');
-			let dots = $(document).find(".b-slider__dot");
+			let dots = $(thisSlider).find(".b-slider__dot");
 			dots.removeClass('is-current');
 			$(dots[currentIndex]).addClass('is-current');
 		});
