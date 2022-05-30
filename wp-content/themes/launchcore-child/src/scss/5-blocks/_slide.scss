@@ -19,17 +19,26 @@
 
 .b-slide__inner{
 	width: 100%;
+	@include s-responsive__mobile-up{
+		max-width: 47rem;
+		left: 50%;
+		transform: translateX(-50%);
+		position: relative;
+	}
 }
 
 .b-slide__headline{
 	font-weight: 600;
 	font-size: 2.5rem;
-	margin-bottom: 2.5rem;
+	margin-bottom: 1em;
 	.b-slider__color--dark &{
 		color: #FFF;
 	}
 	.b-slider__color--light &{
 		color: #1E2C3A;
+	}
+	@include s-responsive__mobile-up{
+		font-size: 4rem;
 	}
 }
 
