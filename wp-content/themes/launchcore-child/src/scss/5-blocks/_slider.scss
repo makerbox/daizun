@@ -32,3 +32,42 @@
 		font-size: 4rem;
 	}
 }
+
+.b-slider__controls{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	transform: translateY(-50%);
+	display: flex;
+	justify-content: space-between;
+	padding: 0 $s-padding__mobile;
+	height: 2.5rem;
+	svg{
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: contain;
+		path{
+			stroke-width: 2px;
+		}
+		.b-slider__color--dark &{
+			path{
+				stroke: #FFF;
+			}
+		}
+		.b-slider__color--light &{
+			path{
+				stroke: #1E2C3A;
+			}
+		}
+	}
+}
+
+
+.b-slider__slides{
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	height: 14rem;
+}

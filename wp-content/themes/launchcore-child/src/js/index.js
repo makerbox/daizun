@@ -12,3 +12,4 @@ import "./components/navbar.js";
 
 //blocks
 import "./blocks/lead-stats.js";
+import './blocks/slider.js';
