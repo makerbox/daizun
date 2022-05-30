@@ -71,3 +71,26 @@
 	overflow: hidden;
 	height: 14rem;
 }
+
+.b-slider__dot{
+	display: inline-block;
+	content: '';
+	position: relative;
+	height: 1rem;
+	margin-right: .5rem;
+	width: 1rem;
+	border-radius: 50%;
+	.b-slider__color--dark &{
+		background: #B5E4F6;
+		&.is-current{
+			background: #D00D1C;
+		}
+	}
+	.b-slider__color--light &{
+		background: #1E2C3A;
+		&.is-current{
+			background: #D00D1C;
+		}
+	}
+	
+}
