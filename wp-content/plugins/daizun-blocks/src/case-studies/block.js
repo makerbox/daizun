@@ -1,5 +1,5 @@
 /**
- * BLOCK: lead-stats
+ * BLOCK: case-studies
  *
  * Registering a basic block with Gutenberg.
  * Simple block, renders and saves the same content without any interactivity.
@@ -12,7 +12,7 @@ const { Panel, PanelBody, PanelRow } = wp.components;
 const { select, dispatch } = wp.data;
 import { useState } from '@wordpress/element';
 
-const ALLOWED_BLOCKS = ['dz/lead-stat'];
+const ALLOWED_BLOCKS = ['dz/case-study'];
 /**
  * Register a Gutenberg Block.
  *
@@ -26,9 +26,9 @@ const ALLOWED_BLOCKS = ['dz/lead-stat'];
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'dz/lead-stats', {
+registerBlockType( 'dz/case-studies', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'lead-stats' ), // Block title.
+	title: __( 'case-studies' ), // Block title.
 	icon: 'images-alt', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
@@ -38,12 +38,6 @@ registerBlockType( 'dz/lead-stats', {
 		headline: {
 			type: "string",
 			default: "headline"
-		},
-		backgroundURL: {
-			type: "string"
-		},
-		backgroundID: {
-			type: "string"
 		}
 	},
 	/**
@@ -64,53 +58,19 @@ registerBlockType( 'dz/lead-stats', {
 			setAttributes({ headline: newText });			
 		};
 
-		const backgroundChange = ( newImg ) => {
-			let backgroundURL = newImg.sizes.full.url;
-			let backgroundID = newImg.id.toString();
-		    setAttributes({
-		        backgroundURL: backgroundURL,
-		        backgroundID: backgroundID
-		    })
-		};	
-
 		return (
-			<div className="b-lead-stats">
-				<div className="b-lead-stats__background">
-					<img src={attributes.backgroundURL} className={`wp-image-${attributes.backgroundID}`} />
-				</div>
-				<div className="b-lead-stats__foreground">
-					<div className="b-lead-stats__inner">
-						<h1 className="b-lead-stats__headline">
-							<RichText
-								onChange={headlineChange}
-								value={attributes.headline}
-							/>
-						</h1>
-						<div className="b-lead-stats__lead-stats">
-							<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
-						</div>
+			<div className="b-case-studies">
+				<div className="b-case-studies__inner">
+					<h1 className="b-case-studies__headline">
+						<RichText
+							onChange={headlineChange}
+							value={attributes.headline}
+						/>
+					</h1>
+					<div className="b-case-studies__case-studies">
+						<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
 					</div>
-				</div>
-
-				<InspectorControls>
-					<hr style={{border:'2px solid black'}}/>
-					<Panel className="panel-group" header="Background">					
-						<img src={attributes.backgroundURL} className={`wp-image-${attributes.backgroundID}`} />
-						<MediaUpload 
-			                onSelect={backgroundChange}
-			                render={
-			                	({open}) => {
-				                	return(
-				                		<button onClick={ open }>
-				                			Background image..
-				                		</button>
-				                	)
-					            }
-					        }
-			            />
-					</Panel>
-					<hr style={{border:'2px solid black'}}/>
-				</InspectorControls>			
+				</div>		
 			</div>			
 		);
 	},
@@ -128,22 +88,17 @@ registerBlockType( 'dz/lead-stats', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-lead-stats">
-				<div className="b-lead-stats__background">
-					<img src={attributes.backgroundURL} className={`wp-image-${attributes.backgroundID}`} />
-				</div>
-				<div className="b-lead-stats__foreground">
-					<div className="b-lead-stats__inner">
-						<h1 className="b-lead-stats__headline">
-							<RichText.Content
-								value={attributes.headline}
-							/>
-						</h1>
-						<div className="b-lead-stats__lead-stats">
-							<InnerBlocks.Content />
-						</div>
+			<div className="b-case-studies">
+				<div className="b-case-studies__inner">
+					<h1 className="b-case-studies__headline">
+						<RichText.Content
+							value={attributes.headline}
+						/>
+					</h1>
+					<div className="b-case-studies__case-studies">
+						<InnerBlocks.Content />
 					</div>
-				</div>
+				</div>		
 			</div>
 		);
 	},

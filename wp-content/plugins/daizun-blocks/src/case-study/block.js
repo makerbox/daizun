@@ -1,5 +1,5 @@
 /**
- * BLOCK: lead-stat
+ * BLOCK: case-study
  *
  * Registering a basic block with Gutenberg.
  * Simple block, renders and saves the same content without any interactivity.
@@ -12,6 +12,7 @@ const { Panel, PanelBody, PanelRow } = wp.components;
 const { select, dispatch } = wp.data;
 import { useState } from '@wordpress/element';
 
+const ALLOWED_BLOCKS = ['dz/case-study-slide'];
 /**
  * Register a Gutenberg Block.
  *
@@ -25,25 +26,31 @@ import { useState } from '@wordpress/element';
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'dz/lead-stat', {
+registerBlockType( 'dz/case-study', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'lead-stat' ), // Block title.
+	title: __( 'case-study' ), // Block title.
 	icon: 'images-alt', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
 		__( 'dz' ),
 	],
 	attributes: {
-		description: {
+		title: {
 			type: "string",
-			default: "description"
+			default: "title"
 		},
-		stat: {
+		date: {
 			type: "string",
-			default: "XXXXXX"
+			default: "date"
+		},
+		imgURL: {
+			type: "string"
+		},
+		imgID: {
+			type: "string"
 		}
 	},
-	parent: ['dz/lead-stats'],
+	parent: ['dz/case-studys'],
 
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -59,29 +66,59 @@ registerBlockType( 'dz/lead-stat', {
 	edit: ( {attributes, setAttributes} ) => {
 		
 
-		const descriptionChange = (newText) => {
-			setAttributes({ description: newText });			
+		const titleChange = (newText) => {
+			setAttributes({ title: newText });			
 		};
-		const statChange = (newText) => {
-			setAttributes({ stat: newText });			
+		const dateChange = (newText) => {
+			setAttributes({ date: newText });			
+		};
+		const imgChange = ( newImg ) => {
+			let imgURL = newImg.sizes.full.url;
+			let imgID = newImg.id.toString();
+		    setAttributes({
+		        imgURL: imgURL,
+		        imgID: imgID
+		    })
 		};
 
 		return (
-			<div className="b-lead-stat">
-				<div className="b-lead-stat__inner">
-					<div className="b-lead-stat__stat">
+			<div className="b-case-study">
+				<div className="b-case-study__inner">
+					<div className="b-case-study__title">
 						<RichText
-							onChange={statChange}
-							value={attributes.stat}
+							onChange={titleChange}
+							value={attributes.title}
 						/>
 					</div>
-					<div className="b-lead-stat__description">
+					<div className="b-case-study__date">
 						<RichText
-							onChange={descriptionChange}
-							value={attributes.description}
+							onChange={dateChange}
+							value={attributes.date}
 						/>
 					</div>
+				</div>
+				<div className="b-case-study__slides">
+					<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
 				</div>				
+				<InspectorControls>
+					<hr style={{border:'2px solid black'}}/>
+					<Panel className="panel-group" header="Image">					
+						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
+						<MediaUpload 
+			                onSelect={imgChange}
+			                render={
+			                	({open}) => {
+				                	return(
+				                		<button onClick={ open }>
+				                			Choose image..
+				                		</button>
+				                	)
+					            }
+					        }
+			            />
+					</Panel>
+					<hr style={{border:'2px solid black'}}/>
+				</InspectorControls>		
 			</div>			
 		);
 	},
@@ -99,19 +136,22 @@ registerBlockType( 'dz/lead-stat', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-lead-stat">
-				<div className="b-lead-stat__inner">
-					<div className="b-lead-stat__stat">
+			<div className="b-case-study">
+				<div className="b-case-study__inner">
+					<div className="b-case-study__title">
 						<RichText.Content
-							value={attributes.stat}
+							value={attributes.title}
 						/>
 					</div>
-					<div className="b-lead-stat__description">
+					<div className="b-case-study__date">
 						<RichText.Content
-							value={attributes.description}
+							value={attributes.date}
 						/>
 					</div>
 				</div>
+				<div className="b-case-study__slides">
+					<InnerBlocks.Content />
+				</div>		
 			</div>
 		);
 	},

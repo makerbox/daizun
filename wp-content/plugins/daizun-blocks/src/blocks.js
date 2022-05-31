@@ -18,3 +18,7 @@ import './dot-background/block.js';
 
 import './slider/block.js';
 import './slide/block.js';
+
+import './case-studies/block.js';
+import './case-study/block.js';
+import './case-study-slide/block.js';
