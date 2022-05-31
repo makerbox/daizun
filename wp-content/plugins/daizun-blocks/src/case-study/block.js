@@ -84,6 +84,9 @@ registerBlockType( 'dz/case-study', {
 		return (
 			<div className="b-case-study">
 				<div className="b-case-study__inner">
+					<div className="b-case-study__thumbnail">
+						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
+					</div>
 					<div className="b-case-study__title">
 						<RichText
 							onChange={titleChange}
@@ -138,6 +141,9 @@ registerBlockType( 'dz/case-study', {
 		return (
 			<div className="b-case-study">
 				<div className="b-case-study__inner">
+					<div className="b-case-study__thumbnail">
+						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
+					</div>
 					<div className="b-case-study__title">
 						<RichText.Content
 							value={attributes.title}
