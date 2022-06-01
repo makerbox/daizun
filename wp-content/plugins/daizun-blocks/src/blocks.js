@@ -22,3 +22,6 @@ import './slide/block.js';
 import './case-studies/block.js';
 import './case-study/block.js';
 import './case-study-slide/block.js';
+
+import './tabs/block.js';
+import './tab/block.js';

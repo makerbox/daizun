@@ -1,5 +1,5 @@
 /**
- * BLOCK: lead-stat
+ * BLOCK: tab
  *
  * Registering a basic block with Gutenberg.
  * Simple block, renders and saves the same content without any interactivity.
@@ -25,25 +25,35 @@ import { useState } from '@wordpress/element';
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'dz/lead-stat', {
+registerBlockType( 'dz/tab', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'lead-stat' ), // Block title.
+	title: __( 'tab' ), // Block title.
 	icon: 'images-alt', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
 		__( 'dz' ),
 	],
 	attributes: {
-		description: {
+		title:{
 			type: "string",
-			default: "description"
+			default: "Title"
 		},
-		stat: {
+		quote: {
 			type: "string",
-			default: "XXXXXX"
+			default: "quote"
+		},
+		author: {
+			type: "string",
+			default: "author"
+		},
+		imgURL: {
+			type: "string"
+		},
+		imgID: {
+			type: "string"
 		}
 	},
-	parent: ['dz/lead-stats'],
+	parent: ['dz/tabs'],
 
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -59,29 +69,72 @@ registerBlockType( 'dz/lead-stat', {
 	edit: ( {attributes, setAttributes} ) => {
 		
 
-		const descriptionChange = (newText) => {
-			setAttributes({ description: newText });			
+		const quoteChange = (newText) => {
+			setAttributes({ quote: newText });			
 		};
-		const statChange = (newText) => {
-			setAttributes({ stat: newText });			
+		const authorChange = (newText) => {
+			setAttributes({ author: newText });			
+		};
+		const titleChange = (newText) => {
+			setAttributes({ title: newText });			
+		};
+
+		const imgChange = ( newImg ) => {
+			let imgURL = newImg.sizes.full.url;
+			let imgID = newImg.id.toString();
+		    setAttributes({
+		        imgURL: imgURL,
+		        imgID: imgID
+		    })
 		};
 
 		return (
-			<div className="b-lead-stat">
-				<div className="b-lead-stat__inner">
-					<div className="b-lead-stat__stat">
-						<RichText
-							onChange={statChange}
-							value={attributes.stat}
-						/>
+			<div className="b-tab" data-tab-title={attributes.title}>
+				<div className="b-tab__background">
+					<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
+				</div>
+				<div className="b-tab__foreground">
+					<div className="b-tab__inner">
+						<div className="b-tab__quote">
+							<RichText
+								onChange={quoteChange}
+								value={attributes.quote}
+							/>
+						</div>
+						<div className="b-tab__author">
+							<RichText
+								onChange={authorChange}
+								value={attributes.author}
+							/>
+						</div>
 					</div>
-					<div className="b-lead-stat__description">
+				</div>
+				<InspectorControls>
+					<hr style={{border:'2px solid black'}}/>
+					<Panel className="panel-group" header="Image">					
+						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
+						<MediaUpload 
+			                onSelect={imgChange}
+			                render={
+			                	({open}) => {
+				                	return(
+				                		<button onClick={ open }>
+				                			Choose image..
+				                		</button>
+				                	)
+					            }
+					        }
+			            />
+					</Panel>
+					<hr style={{border:'2px solid black'}}/>
+					<Panel className="panel-group" header="Title">
 						<RichText
-							onChange={descriptionChange}
-							value={attributes.description}
-						/>
-					</div>
-				</div>				
+							onChange={titleChange}
+							value={attributes.title}
+						/>	
+					</Panel>
+					<hr style={{border:'2px solid black'}}/>
+				</InspectorControls>		
 			</div>			
 		);
 	},
@@ -99,17 +152,22 @@ registerBlockType( 'dz/lead-stat', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-lead-stat">
-				<div className="b-lead-stat__inner">
-					<div className="b-lead-stat__stat">
-						<RichText.Content
-							value={attributes.stat}
-						/>
-					</div>
-					<div className="b-lead-stat__description">
-						<RichText.Content
-							value={attributes.description}
-						/>
+			<div className="b-tab">
+				<div className="b-tab__background">
+					<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
+				</div>
+				<div className="b-tab__foreground">
+					<div className="b-tab__inner">
+						<div className="b-tab__quote">
+							<RichText.Content
+								value={attributes.quote}
+							/>
+						</div>
+						<div className="b-tab__author">
+							<RichText.Content
+								value={attributes.author}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -1,0 +1,33 @@
+.b-tabs{
+	width: 100%;
+	display: block;
+	position: relative;
+	height: 39rem;
+	text-align: center;
+	overflow: hidden;
+}
+
+.b-tabs__inner{
+	width: 100%;
+	height: 100%;
+}
+
+.b-tabs__headline{
+	padding: 5rem $s-padding__mobile;
+	font-size: 3rem;
+	color: #FFF;
+	font-weight: 100;
+	position: absolute;
+	z-index: 3;
+	left: 50%;
+	transform: translateX(-50%);
+	@include s-responsive__mobile-up{
+		font-size: 4rem;
+		max-width: 22rem;
+	}
+}
+
+.b-tabs__tabs{
+	width: 100%;
+	height: 100%;
+}
