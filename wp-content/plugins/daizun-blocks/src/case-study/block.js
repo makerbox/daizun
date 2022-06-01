@@ -8,7 +8,7 @@
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const { InspectorControls, RichText, MediaUpload, InnerBlocks } = wp.blockEditor;
-const { Panel, PanelBody, PanelRow } = wp.components;
+const { Panel, PanelBody, SelectControl, PanelRow } = wp.components;
 const { select, dispatch } = wp.data;
 import { useState } from '@wordpress/element';
 
@@ -48,6 +48,10 @@ registerBlockType( 'dz/case-study', {
 		},
 		imgID: {
 			type: "string"
+		},
+		alignment: {
+			type: "string",
+			default: "b-case-study__align--left"
 		}
 	},
 	parent: ['dz/case-studys'],
@@ -80,24 +84,29 @@ registerBlockType( 'dz/case-study', {
 		        imgID: imgID
 		    })
 		};
+		const alignmentChange = (newText) => {
+			setAttributes({ alignment: newText });			
+		};
 
 		return (
-			<div className="b-case-study">
+			<div className={`b-case-study ${attributes.alignment}`}>
 				<div className="b-case-study__inner">
 					<div className="b-case-study__thumbnail">
 						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
 					</div>
-					<div className="b-case-study__title">
-						<RichText
-							onChange={titleChange}
-							value={attributes.title}
-						/>
-					</div>
-					<div className="b-case-study__date">
-						<RichText
-							onChange={dateChange}
-							value={attributes.date}
-						/>
+					<div className="b-case-study__text">
+						<div className="b-case-study__title">
+							<RichText
+								onChange={titleChange}
+								value={attributes.title}
+							/>
+						</div>
+						<div className="b-case-study__date">
+							<RichText
+								onChange={dateChange}
+								value={attributes.date}
+							/>
+						</div>
 					</div>
 				</div>
 				<div className="b-case-study__slides">
@@ -120,6 +129,21 @@ registerBlockType( 'dz/case-study', {
 					        }
 			            />
 					</Panel>
+					
+					<hr style={{border:'2px solid black'}}/>
+					<Panel className="panel-group" header="Alignment">					
+						<SelectControl
+							label="Alignment"
+							value={attributes.alignment}
+							options={
+								[
+									{ label: "Image left - text right", value: "b-case-study__align--left" },
+									{ label: "Text left - image right", value: "b-case-study__align--right" }
+								]
+							}
+							onChange={alignmentChange}
+						/>
+					</Panel>
 					<hr style={{border:'2px solid black'}}/>
 				</InspectorControls>		
 			</div>			
@@ -139,20 +163,22 @@ registerBlockType( 'dz/case-study', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-case-study">
+			<div className={`b-case-study ${attributes.alignment}`}>
 				<div className="b-case-study__inner">
 					<div className="b-case-study__thumbnail">
 						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
 					</div>
-					<div className="b-case-study__title">
-						<RichText.Content
-							value={attributes.title}
-						/>
-					</div>
-					<div className="b-case-study__date">
-						<RichText.Content
-							value={attributes.date}
-						/>
+					<div className="b-case-study__text">
+						<div className="b-case-study__title">
+							<RichText.Content
+								value={attributes.title}
+							/>
+						</div>
+						<div className="b-case-study__date">
+							<RichText.Content
+								value={attributes.date}
+							/>
+						</div>
 					</div>
 				</div>
 				<div className="b-case-study__slides">
