@@ -104,6 +104,13 @@ registerBlockType( 'dz/case-study-slide', {
 			            />
 					</Panel>
 					<hr style={{border:'2px solid black'}}/>
+					<Panel className="panel-group" header="Caption">
+						<RichText
+							onChange={descriptionChange}
+							value={attributes.description}
+						/>
+					</Panel>
+					<hr style={{border:'2px solid black'}}/>
 				</InspectorControls>					
 			</div>			
 		);
@@ -129,7 +136,7 @@ registerBlockType( 'dz/case-study-slide', {
 					</div>
 					<div className="b-case-study-slide__description">
 						<RichText.Content
-							value={attributes.stat}
+							value={attributes.description}
 						/>
 					</div>
 				</div>

@@ -4,8 +4,9 @@ $(document).ready(function(){
 	let scrollWrapper = $(document).find('[data-smooth-wrapper]');
 	$(document).find('.b-case-study__slides').each(function(index){
 		let self = $(this);
+		$(self.find('.b-case-study-slide')[0]).addClass("is-current");// set the first slide to current
 		self.attr('data-slider-id', index); // give them each an ID to connect with their parent
-		scrollWrapper.before(self);
+		scrollWrapper.before(self);		
 	})
 	$(document).find('.b-case-study').each(function(index){
 		let self = $(this);
@@ -28,4 +29,19 @@ $(document).ready(function(){
 	});
 
 	// change slide on interval
+	setInterval(function(){
+		let currentSlide = $(document).find(".b-case-study-slide.is-current");
+		let oldSlide = $(document).find(".b-case-study-slide.is-old");
+		let nextSlide = currentSlide.next();
+		currentSlide.addClass('is-old').removeClass('is-current');
+		oldSlide.removeClass('is-old');
+		if(nextSlide.length){
+			nextSlide.addClass('is-current');
+		}else{
+			let myParent = currentSlide.closest('.b-case-study__slides');
+			console.log(myParent);
+			let firstSlide = myParent.find(".b-case-study-slide")[0];
+			$(firstSlide).removeClass('is-old').addClass('is-current');
+		}
+	}, 5000);
 })

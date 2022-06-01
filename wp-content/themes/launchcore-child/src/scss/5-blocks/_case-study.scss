@@ -105,6 +105,7 @@
 	height: 100vh;
 	display: none;
 	z-index: 9;
+	background: #1E2C3A;
 	&.is-open{
 		display: block;
 	}
