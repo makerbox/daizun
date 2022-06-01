@@ -70,7 +70,9 @@ registerBlockType( 'dz/tabs', {
 					<div className="b-tabs__tabs">
 						<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
 					</div>
-				</div>		
+					<div className="b-tabs__buttons" data-tab-buttons>
+					</div>
+				</div>	
 			</div>			
 		);
 	},
@@ -97,6 +99,8 @@ registerBlockType( 'dz/tabs', {
 					</h1>
 					<div className="b-tabs__tabs">
 						<InnerBlocks.Content />
+					</div>
+					<div className="b-tabs__buttons" data-tab-buttons>
 					</div>
 				</div>		
 			</div>
