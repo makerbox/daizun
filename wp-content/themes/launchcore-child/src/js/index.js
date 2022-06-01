@@ -15,3 +15,4 @@ import "./globals/scroll.js";
 import "./blocks/lead-stats.js";
 import './blocks/slider.js';
 import './blocks/case-study.js';
+import './blocks/tabs.js';

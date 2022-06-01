@@ -152,7 +152,7 @@ registerBlockType( 'dz/tab', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-tab">
+			<div className="b-tab" data-tab-title={attributes.title}>
 				<div className="b-tab__background">
 					<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
 				</div>
