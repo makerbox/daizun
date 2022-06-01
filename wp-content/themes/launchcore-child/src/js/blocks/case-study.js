@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	var interval;
 	// rip the sliders out from the smooth scroll container, so they can be fixed position
 	let scrollWrapper = $(document).find('[data-smooth-wrapper]');
 	$(document).find('.b-case-study__slides').each(function(index){
@@ -23,25 +23,25 @@ $(document).ready(function(){
 		let mySlider = $(document).find('[data-slider-id="'+myID+'"]');
 		if(mySlider.hasClass('is-open')){
 			mySlider.removeClass('is-open');
+			clearInterval(interval);
 		}else{
 			mySlider.addClass('is-open');
+			// change slide on interval
+			interval = setInterval(function(){
+				let currentSlide = mySlider.find(".b-case-study-slide.is-current");
+				let oldSlide = mySlider.find(".b-case-study-slide.is-old");
+				let nextSlide = currentSlide.next();
+				currentSlide.addClass('is-old').removeClass('is-current');
+				oldSlide.removeClass('is-old');
+				if(nextSlide.length){
+					nextSlide.addClass('is-current');
+				}else{
+					let firstSlide = mySlider.find(".b-case-study-slide")[0];
+					$(firstSlide).removeClass('is-old').addClass('is-current');
+				}
+			}, 5000	);
 		};
 	});
 
-	// change slide on interval
-	setInterval(function(){
-		let currentSlide = $(document).find(".b-case-study-slide.is-current");
-		let oldSlide = $(document).find(".b-case-study-slide.is-old");
-		let nextSlide = currentSlide.next();
-		currentSlide.addClass('is-old').removeClass('is-current');
-		oldSlide.removeClass('is-old');
-		if(nextSlide.length){
-			nextSlide.addClass('is-current');
-		}else{
-			let myParent = currentSlide.closest('.b-case-study__slides');
-			console.log(myParent);
-			let firstSlide = myParent.find(".b-case-study-slide")[0];
-			$(firstSlide).removeClass('is-old').addClass('is-current');
-		}
-	}, 5000);
+
 })
