@@ -1,0 +1,31 @@
+$(document).ready(function(){
+
+	// rip the sliders out from the smooth scroll container, so they can be fixed position
+	let scrollWrapper = $(document).find('[data-smooth-wrapper]');
+	$(document).find('.b-case-study__slides').each(function(index){
+		let self = $(this);
+		self.attr('data-slider-id', index); // give them each an ID to connect with their parent
+		scrollWrapper.before(self);
+	})
+	$(document).find('.b-case-study').each(function(index){
+		let self = $(this);
+		self.attr('data-slider-id', index); // give them each an ID to connect with their slider
+	})
+
+	// open / close the slider
+	$(document).on('click touchend', '[data-slider-id]', function(e){ // open slider
+		e.preventDefault();
+		e.stopPropagation();
+
+		let self = $(this);
+		let myID = self.attr('data-slider-id');
+		let mySlider = $(document).find('[data-slider-id="'+myID+'"]');
+		if(mySlider.hasClass('is-open')){
+			mySlider.removeClass('is-open');
+		}else{
+			mySlider.addClass('is-open');
+		};
+	});
+
+	// change slide on interval
+})

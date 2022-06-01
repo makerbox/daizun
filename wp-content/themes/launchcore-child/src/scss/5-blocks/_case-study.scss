@@ -98,12 +98,15 @@
 }
 
 .b-case-study__slides{
-	display: block;
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100vw;
 	height: 100vh;
 	display: none;
+	z-index: 9;
+	&.is-open{
+		display: block;
+	}
 }
 

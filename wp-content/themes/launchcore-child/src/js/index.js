@@ -14,3 +14,4 @@ import "./globals/scroll.js";
 //blocks
 import "./blocks/lead-stats.js";
 import './blocks/slider.js';
+import './blocks/case-study.js';
