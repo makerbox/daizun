@@ -42,20 +42,5 @@
 	</div>
 </header>
 <body <?php body_class(); ?>>
-
-	
-
-	<!-- home-banner | page-banner (contact us)
-			(home-banner innerblock) stats-slider
-	image-text
-	background-text
-	text-cta-slider (colours switchable)
-		text-cta-slide
-	case-studies
-		case-study
-	tabs-banner
-		tab
-	footer
-
-	contact (block with form innerblock?)
-	 -->
+	<div data-smooth-wrapper>
+		<div data-smooth-content>
