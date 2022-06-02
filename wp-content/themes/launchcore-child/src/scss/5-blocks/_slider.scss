@@ -22,6 +22,7 @@
 	font-size: 3rem;
 	font-weight: 100;
 	margin-bottom: 1em;
+	text-align: center;
 	.b-slider__color--dark &{
 		color: #FFF;
 	}
@@ -65,6 +66,7 @@
 	}
 	@include s-responsive__mobile-up{
 		height: 6.5rem;
+		@include s-responsive__max();
 	}
 }
 
@@ -118,6 +120,7 @@
 	padding: 1rem 0;
 	cursor: pointer;
 	user-select: none;
+	text-decoration: none;
 	strong{
 		margin-left: .5rem;
 	}

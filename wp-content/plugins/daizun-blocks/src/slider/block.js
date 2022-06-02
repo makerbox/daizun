@@ -166,11 +166,11 @@ registerBlockType( 'dz/slider', {
 							</svg>
 						</div>
 					</div>
-					<div className="b-slider__cta">
+					<a href="mailto:info@daizun.com" className="b-slider__cta">
 						<RichText.Content
 							value={attributes.ctaText}
 						/>
-					</div>
+					</a>
 				</div>
 			</div>
 		);

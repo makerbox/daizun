@@ -70,7 +70,7 @@ if ( $mch_tool_autoupdate === '0' or  $mch_tool_autoupdate ==='1' ) {
         </td>
       </tr>
 
-       <tr class="to-hide">
+       <tr class="">
         <th scope="row"></th>
         <td>
           <fieldset><legend class="screen-reader-text"><span>Add As Unsubscribed</span></legend><label for="wpcf7-mailchimp-cfactive">

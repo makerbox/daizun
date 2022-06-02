@@ -88,7 +88,7 @@ registerBlockType( 'dz/case-studies', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-case-studies">
+			<div className="b-case-studies" id="case-studies">
 				<div className="b-case-studies__inner">
 					<h1 className="b-case-studies__headline">
 						<RichText.Content

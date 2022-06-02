@@ -3,8 +3,8 @@ Contributors: dnesscarkey
 Donate link: https://dineshkarki.com.np/wp-armour-anti-spam
 Tags: anti spam, spam checker, spam filter, gravity forms, contact form 7
 Requires at least: 3.0
-Tested up to: 5.8.2
-Stable tag: 1.9.1
+Tested up to: 6.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -135,6 +135,23 @@ With WP Armour - Honeypot Anti Spam plugin it is No. But if you want you can use
 1. Screenshot #11. Anti Spam for Fluent Forms
 
 == Changelog ==
+
+= = 2.0.1 =
+
+* Fixed error message due to removal of ajax call. 
+
+= = 2.0 =
+
+* Fixed false notification message regarding version conflict.
+
+= = 1.10 =
+
+* Fixed Popup Form issue
+* Removed wpa_field_info Ajax call
+
+= = 1.9.2 =
+* Fixed Astra Theme Comment Issue
+
 
 = = 1.9.1 =
 * Removed alert msg error.

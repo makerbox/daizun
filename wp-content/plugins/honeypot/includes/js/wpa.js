@@ -2,34 +2,21 @@ var wpa_field_name, wpa_unique_id, wpa_add_test, wpa_hidden_field;
 
 jQuery(document).ready(function(){
 	
-	jQuery.ajax({
-	    url: wpa_admin_ajax_url,
-	    data: {'action':'wpa_field_info'},
-	    type: 'GET',
-	    success: function(response){ 
-	        returnData 		= JSON.parse(response);
-			wpa_field_name 	= returnData.wpa_field_name;
-			wpa_unique_id 	= returnData.wpa_field_value;
-			wpa_add_test 	= returnData.wpa_add_test;
+	wpa_field_name 	= wpa_field_info.wpa_field_name;
+	wpa_unique_id 	= wpa_field_info.wpa_field_value;
+	wpa_add_test 	= wpa_field_info.wpa_add_test;
 
-			wpa_hidden_field 			= "<span class='wpa_hidden_field' style='display:none;height:0;width:0;'><input type='text' name='"+wpa_field_name+"' value='"+wpa_unique_id+"' /></span>";
+	wpa_hidden_field 			= "<span class='wpa_hidden_field' style='display:none;height:0;width:0;'><input type='text' name='"+wpa_field_name+"' value='"+wpa_unique_id+"' /></span>";
 
-			wpa_add_honeypot_field();
+	wpa_add_honeypot_field();
 
-			if (typeof wpae_add_honeypot_field == 'function') { // IF EXTENDED version exists.
-			  wpae_add_honeypot_field(); 
-			}
-			
-			if (wpa_add_test == 'yes'){
-				wpa_add_test_block();
-			}
-	    },
-	    error: function(response) {
-	        if (console && console.error) {
-                console.error('Unable to add WP Armour Anti Spam protection.');
-            }
-	    }
-	});
+	if (typeof wpae_add_honeypot_field == 'function') { // IF EXTENDED version exists.
+	  wpae_add_honeypot_field(); 
+	}
+	
+	if (wpa_add_test == 'yes'){
+		wpa_add_test_block();
+	}
 
 });
 
@@ -50,6 +37,7 @@ function wpa_add_honeypot_field(){
 	jQuery('.bbp-topic-form form').append(wpa_hidden_field); // BBPRESS TOPIC
 	jQuery('.bbp-reply-form form').append(wpa_hidden_field); // BBPRESS REPLY
 	jQuery('form#commentform').append(wpa_hidden_field); // WP COMMENT
+	jQuery('form#ast-commentform').append(wpa_hidden_field); // Astra Comment Form
 	jQuery('form.wpcf7-form').append(wpa_hidden_field); // CONTACT FORM 7
 	jQuery('form.wpforms-form').append(wpa_hidden_field); // WPFFORMS
 	jQuery('.gform_wrapper form').append(wpa_hidden_field); // GRAVITY FORMS

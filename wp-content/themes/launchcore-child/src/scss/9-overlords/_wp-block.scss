@@ -12,4 +12,17 @@
 		text-align: center;
 		opacity: 1;
 	}
+	.b-tabs{
+		height: auto;
+	}
+	.b-tabs__headline{
+		position: relative;
+		color: #000;
+	}
+	.b-tab{
+		opacity: 1;
+		position: relative;
+		left: auto;
+		top: auto;
+	}
 }

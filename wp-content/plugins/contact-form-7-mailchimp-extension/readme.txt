@@ -103,11 +103,11 @@ Do you have questions or issues with Contact Form 7 Mailchimp Extension? Use the
 
 For more information, see [Releases](https://chimpmatic.com/faqs).
 
-= 0.5.58 =
+= 0.5.61 =
 
-* Bug fixes
+* Corrected crashing on some server environments
 
-= 0.5.54 =
+= 0.5.60 =
 
 * Corrected Warning lib/handler.php
 

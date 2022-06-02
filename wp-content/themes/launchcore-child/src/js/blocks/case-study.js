@@ -39,7 +39,7 @@ $(document).ready(function(){
 					let firstSlide = mySlider.find(".b-case-study-slide")[0];
 					$(firstSlide).removeClass('is-old').addClass('is-current');
 				}
-			}, 5000	);
+			}, 2000	);
 		};
 	});
 

@@ -1,8 +1,8 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
-function wpa_load_scripts(){
+function wpa_load_scripts(){	
 	wp_enqueue_script( 'wpascript',  plugins_url( '/js/wpa.js', __FILE__ ), array ( 'jquery' ), $GLOBALS['wpa_version'], true);
-	wp_add_inline_script( 'wpascript', 'var wpa_admin_ajax_url = "'.admin_url("admin-ajax.php").'";');
+	wp_add_inline_script( 'wpascript', 'wpa_field_info = '.json_encode(wpa_field_info()));
 	wp_enqueue_style( 'wpa-css', plugins_url( '/css/wpa.css', __FILE__ ), array(), $GLOBALS['wpa_version']);
 }
 
@@ -136,7 +136,7 @@ function wpa_check_is_spam($form_data){
 	}
 }
 
-function wpa_field_info_ajax(){
+function wpa_field_info(){
 	if (current_user_can('activate_plugins') && (get_option('wpa_disable_test_widget') != 'yes')){
     	$wpa_add_test = 'yes';
 	} else {
@@ -147,8 +147,7 @@ function wpa_field_info_ajax(){
 			'wpa_field_name' 	=> $GLOBALS['wpa_field_name'],
 			'wpa_field_value' 	=> wpa_unqiue_field_value(),
 			'wpa_add_test'		=> $wpa_add_test
-	);	
+	);
 
-	echo json_encode($return);
-	wp_die();
+	return $return;
 }

@@ -14,6 +14,9 @@
     text-align: center;
     flex-direction: column;
     align-items: center;
+    @include s-responsive__mobile-up{
+    	@include s-responsive__max();
+    }
 }
 
 .b-case-studies__headline{
