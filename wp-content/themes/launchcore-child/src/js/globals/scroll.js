@@ -2,8 +2,8 @@ $(document).ready(function(){
 	gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 	let smoother = ScrollSmoother.create({
-		wrapper: '[data-smooth-wrapper]',
-		content: '[data-smooth-content]'
+		content: '[data-smooth-content]',
+ 		effects: true
 	});
 
 
@@ -14,5 +14,10 @@ $(document).ready(function(){
 		e.preventDefault();
 		smoother.scrollTo("#case-studies", true);
 	})
+
+
+	// parallax (give the element a height bigger than the container and the container overflow hidden)
+	// smoother.effects(".b-lead-stats__background img", { speed: "auto" });
+	// smoother.effects(".b-dot-background__background img", {speed:"auto"});
 
 })
