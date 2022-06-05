@@ -27,3 +27,5 @@ import './tabs/block.js';
 import './tab/block.js';
 
 import './banner/block.js';
+
+import './contact/block.js';
