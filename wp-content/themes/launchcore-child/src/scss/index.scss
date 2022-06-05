@@ -32,6 +32,7 @@
 @import './5-blocks/case-study-slide';
 @import './5-blocks/tabs';
 @import './5-blocks/tab';
+@import './5-blocks/banner';
 
 // // 6-parts	-----------template parts e.g. header
 @import './6-parts/header';
@@ -39,7 +40,7 @@
 
 
 // // 7-templates	-----------made up of many sections e.g. front-page
-// @import './7-templates/pre';
+@import './7-templates/front-page';
 
 // // 8-vendor	-----------third party styles
 

@@ -25,3 +25,5 @@ import './case-study-slide/block.js';
 
 import './tabs/block.js';
 import './tab/block.js';
+
+import './banner/block.js';

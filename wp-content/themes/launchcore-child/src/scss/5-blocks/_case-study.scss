@@ -109,5 +109,16 @@
 	&.is-open{
 		display: block;
 	}
+	&:after{
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		display: block;
+		z-index: 99;
+		content: 'X';
+		color: #FFF;
+		font-size: 3rem;
+		cursor: pointer;
+	}
 }
 

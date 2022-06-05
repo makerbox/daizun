@@ -1,20 +1,20 @@
-.b-lead-stats{
+.b-banner{
 	position: relative;
 	width: 100%;
-	// height: 33rem;
 	height: 100vh;
 	@include s-responsive__mobile-up{
-		// height: 59.5rem;
+		height: 29rem;
 	}
 }
 
-.b-lead-stats__background{
+.b-banner__background{
 	z-index: 1;
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
+	background: #B5E4F6;
 	img{
 		width: 100%;
 		height: 100%;
@@ -31,14 +31,14 @@
 	}
 }
 
-.b-lead-stats__foreground{
+.b-banner__foreground{
 	position: relative;
 	z-index: 2;
 	height: 100%;
 	width: 100%;
 }
 
-.b-lead-stats__inner{
+.b-banner__inner{
 	padding: 0 $s-padding__mobile;
 	position: absolute;
 	top: 0;
@@ -56,32 +56,16 @@
 	}
 }
 
-.b-lead-stats__headline{
+.b-banner__headline{
+	text-align: center;
 	color: #FFF;
-	font-size: 2.5rem;
+	font-size: 4rem;
 	font-family: serenity, sans-serif;
 	text-transform: uppercase;
 	font-weight: 100;
 	line-height: .77;
 	@include s-responsive__mobile-up{
-		font-size: 3.5rem;
 		@include s-responsive__max();
 		position: relative;
-	}
-}
-
-.b-lead-stats__lead-stats{
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	padding: 1.5rem;
-	background: rgba(121, 228, 246, .6);
-	width: 100%;
-	height: 7.5rem;
-	@include s-responsive__mobile-up{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 3rem;
 	}
 }

@@ -1,5 +1,5 @@
 /**
- * BLOCK: lead-stats
+ * BLOCK: banner
  *
  * Registering a basic block with Gutenberg.
  * Simple block, renders and saves the same content without any interactivity.
@@ -7,12 +7,11 @@
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
-const { InspectorControls, RichText, MediaUpload, InnerBlocks } = wp.blockEditor;
+const { InspectorControls, RichText, MediaUpload } = wp.blockEditor;
 const { Panel, PanelBody, PanelRow } = wp.components;
 const { select, dispatch } = wp.data;
 import { useState } from '@wordpress/element';
 
-const ALLOWED_BLOCKS = ['dz/lead-stat'];
 /**
  * Register a Gutenberg Block.
  *
@@ -26,9 +25,9 @@ const ALLOWED_BLOCKS = ['dz/lead-stat'];
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'dz/lead-stats', {
+registerBlockType( 'dz/banner', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'lead-stats' ), // Block title.
+	title: __( 'banner' ), // Block title.
 	icon: 'images-alt', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
@@ -39,10 +38,10 @@ registerBlockType( 'dz/lead-stats', {
 			type: "string",
 			default: "headline"
 		},
-		backgroundURL: {
+		imgURL: {
 			type: "string"
 		},
-		backgroundID: {
+		imgID: {
 			type: "string"
 		}
 	},
@@ -64,40 +63,37 @@ registerBlockType( 'dz/lead-stats', {
 			setAttributes({ headline: newText });			
 		};
 
-		const backgroundChange = ( newImg ) => {
-			let backgroundURL = newImg.url;
+		const imgChange = ( newImg ) => {
+			let imgURL = newImg.sizes.full.url;
+			let imgID = newImg.id.toString();
 		    setAttributes({
-		        backgroundURL: backgroundURL
+		        imgURL: imgURL,
+		        imgID: imgID
 		    })
-		};	
+		};
 
 		return (
-			<div className="b-lead-stats">
-				<div className="b-lead-stats__background">
-					<video loop autoplay muted>
-						<source src={attributes.backgroundURL} type="video/mp4" />
-					</video>
+			<div className="b-banner">
+				<div className="b-banner__background">
+					<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
 				</div>
-				<div className="b-lead-stats__foreground">
-					<div className="b-lead-stats__inner">
-						<h1 className="b-lead-stats__headline">
+				<div className="b-banner__foreground">
+					<div className="b-banner__inner">
+						<h1 className="b-banner__headline">
 							<RichText
 								onChange={headlineChange}
 								value={attributes.headline}
 							/>
 						</h1>
-						<div className="b-lead-stats__lead-stats">
-							<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
-						</div>
 					</div>
 				</div>
 
 				<InspectorControls>
 					<hr style={{border:'2px solid black'}}/>
 					<Panel className="panel-group" header="Background">					
-						<img src={attributes.backgroundURL} className={`wp-image-${attributes.backgroundID}`} />
+						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
 						<MediaUpload 
-			                onSelect={backgroundChange}
+			                onSelect={imgChange}
 			                render={
 			                	({open}) => {
 				                	return(
@@ -128,22 +124,17 @@ registerBlockType( 'dz/lead-stats', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-lead-stats">
-				<div className="b-lead-stats__background">
-					<video loop autoplay muted>
-						<source src={attributes.backgroundURL} type="video/mp4" />
-					</video>
+			<div className="b-banner">
+				<div className="b-banner__background">
+					<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
 				</div>
-				<div className="b-lead-stats__foreground">
-					<div className="b-lead-stats__inner">
-						<h1 className="b-lead-stats__headline">
+				<div className="b-banner__foreground">
+					<div className="b-banner__inner">
+						<h1 className="b-banner__headline">
 							<RichText.Content
 								value={attributes.headline}
 							/>
 						</h1>
-						<div className="b-lead-stats__lead-stats">
-							<InnerBlocks.Content />
-						</div>
 					</div>
 				</div>
 			</div>

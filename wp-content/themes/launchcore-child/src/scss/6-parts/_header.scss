@@ -15,6 +15,10 @@
 	align-items: flex-start;
 	justify-content: space-between;
 	width: 100%;
+	@include s-responsive__mobile-up{
+		@include s-responsive__max();
+		position: relative;
+	}
 }
 
 .p-header__menu--menu{
@@ -50,11 +54,14 @@
 			border-bottom: 1px solid #D00D1C;
 		}
 		&:last-of-type{
-			border: 1px solid #D00D1C;
-			border-radius: 5px;
-			padding: 1rem;
-			height: 3rem;
-		}			
+			border-bottom: none;
+			a{
+				border: 1px solid #D00D1C;
+				border-radius: 5px;
+				padding: 1rem;
+				height: 3rem;
+			}			
+		}
 		a{
 			color: #FFF;
 			text-decoration: none;

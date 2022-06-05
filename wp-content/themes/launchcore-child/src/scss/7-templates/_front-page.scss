@@ -1,0 +1,6 @@
+.t-front-page{
+	scroll-snap-type: y proximity;
+	> div{
+		scroll-snap-align: start;
+	}
+}
