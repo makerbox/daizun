@@ -49,6 +49,7 @@
 	flex-direction: column;
 	@include s-responsive__mobile-up{
 		flex-direction: row;
+		align-items: flex-end;
 	}
 }
 
@@ -66,6 +67,10 @@
 		background: #FFF;
 		border-radius: 4px;
 		padding: .5rem;
+	}
+	>div{
+		margin-top: .5rem;
+		font-size: .75em;
 	}
 	@include s-responsive__mobile-up{
 		padding-right: 2rem;
