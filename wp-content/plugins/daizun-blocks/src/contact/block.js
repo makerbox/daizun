@@ -105,7 +105,7 @@ registerBlockType( 'dz/contact', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-contact">
+			<div className="b-contact panel">
 				<div className="b-contact__inner">
 					<div className="b-contact__half">
 						<div className="b-contact__paragraph">

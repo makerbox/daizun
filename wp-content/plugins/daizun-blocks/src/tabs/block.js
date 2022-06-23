@@ -90,7 +90,7 @@ registerBlockType( 'dz/tabs', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-tabs">
+			<div className="b-tabs panel">
 				<div className="b-tabs__inner">
 					<h1 className="b-tabs__headline">
 						<RichText.Content

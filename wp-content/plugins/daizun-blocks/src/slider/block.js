@@ -142,7 +142,7 @@ registerBlockType( 'dz/slider', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className={`b-slider b-slider__color--${attributes.colorScheme}`}>
+			<div className={`b-slider panel b-slider__color--${attributes.colorScheme}`}>
 				<div className="b-slider__inner">
 					<h2 className="b-slider__headline">
 						<RichText.Content

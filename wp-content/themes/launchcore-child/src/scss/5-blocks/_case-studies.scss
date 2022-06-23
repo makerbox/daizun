@@ -16,6 +16,8 @@
     align-items: center;
     @include s-responsive__mobile-up{
     	@include s-responsive__max();
+    	left: auto;
+    	transform: none;
     }
 }
 

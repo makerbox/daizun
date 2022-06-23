@@ -135,7 +135,7 @@ registerBlockType( 'dz/dot-background', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-dot-background">
+			<div className="b-dot-background panel">
 				<div className="b-dot-background__background">
 					<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
 				</div>

@@ -128,7 +128,7 @@ registerBlockType( 'dz/lead-stats', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-lead-stats">
+			<div className="b-lead-stats panel">
 				<div className="b-lead-stats__background">
 					<video loop autoplay muted>
 						<source src={attributes.backgroundURL} type="video/mp4" />

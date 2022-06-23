@@ -135,7 +135,7 @@ registerBlockType( 'dz/story', {
 	 */
 	save: ( {attributes} ) => {	
 		return (
-			<div className="b-story">
+			<div className="b-story panel">
 				<div className="b-story__inner">
 					<div className="b-story__image">
 						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />

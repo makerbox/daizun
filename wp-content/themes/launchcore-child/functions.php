@@ -31,5 +31,6 @@ function get_greensock(){
 	wp_enqueue_script('clubgreensock', get_stylesheet_directory_uri() . '/src/js/gsap-business-green/minified/gsap.min.js', array(), false, true);
 	wp_enqueue_script('clubgreensock-scrolltrigger', get_stylesheet_directory_uri() . '/src/js/gsap-business-green/minified/ScrollTrigger.min.js', array(), false, true);
 	wp_enqueue_script('clubgreensock-scrollsmoother', get_stylesheet_directory_uri() . '/src/js/gsap-business-green/minified/ScrollSmoother.min.js', array(), false, true);
+	wp_enqueue_script('clubgreensock-scrolltoplugin', get_stylesheet_directory_uri() . '/src/js/gsap-business-green/minified/ScrollToPlugin.min.js', array(), false, true);
 }
 add_action('wp_enqueue_scripts', 'get_greensock');
