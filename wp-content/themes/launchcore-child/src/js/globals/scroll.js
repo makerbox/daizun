@@ -44,7 +44,7 @@ $(document).ready(function(){
 
 		ScrollTrigger.create({
 			trigger: nextPanel,
-			start: "+=100 bottom",
+			start: "+=10 bottom",
 			onEnter: () => goToPos(nextPanel.offset().top)
 		});
 

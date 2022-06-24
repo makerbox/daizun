@@ -17,6 +17,8 @@
 	@include s-responsive__mobile-up{
 		@include s-responsive__max();
 		position: relative;
+		left: auto;
+		transform: none;
 		display: flex;
 		align-items: center;
 	}
