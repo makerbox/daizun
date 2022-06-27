@@ -3,7 +3,8 @@ $(document).ready(function(){
 
 	let smoother = ScrollSmoother.create({
 		content: '[data-smooth-content]',
- 		effects: true
+ 		effects: false,
+ 		smooth: .5
 	});
 
 
@@ -22,10 +23,11 @@ $(document).ready(function(){
 
 
 
-	function goToPos(targetPos) {
-		gsap.to(window, {
-			scrollTo: {y: targetPos, autoKill: false},
-			duration: .5
+	function goToPos(target) {
+		gsap.to(smoother, {
+			scrollTop: smoother.offset(target, "top top"),
+			duration: 1,
+			ease: "power3.out"
 		});
 	}
 
@@ -45,7 +47,7 @@ $(document).ready(function(){
 		ScrollTrigger.create({
 			trigger: nextPanel,
 			start: "+=10 bottom",
-			onEnter: () => goToPos(nextPanel.offset().top)
+			onEnter: () => goToPos(nextPanel)
 		});
 
 		// let panel = $(this);
