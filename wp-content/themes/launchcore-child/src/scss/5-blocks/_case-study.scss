@@ -106,19 +106,77 @@
 	display: none;
 	z-index: 9;
 	background: #1E2C3A;
+	overflow: hidden;
 	&.is-open{
 		display: block;
 	}
-	&:after{
-		position: absolute;
-		top: 1rem;
-		right: 1rem;
+}
+
+.b-case-study__slides--controls{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	transform: translateY(-50%);
+	display: flex;
+	justify-content: space-between;
+	padding: 0 $s-padding__mobile;
+	height: 1.5rem;
+	cursor: pointer;
+	svg{
+		width: 100%;
+		height: 100%;
 		display: block;
-		z-index: 99;
-		content: 'X';
-		color: #FFF;
-		font-size: 3rem;
-		cursor: pointer;
+		object-fit: contain;
+		path{
+			stroke-width: 2px;
+		}
+		.b-slider__color--dark &{
+			path{
+				stroke: #FFF;
+			}
+		}
+		.b-slider__color--light &{
+			path{
+				stroke: #1E2C3A;
+			}
+		}
+	}
+	@include s-responsive__mobile-up{
+		height: 6.5rem;
+		@include s-responsive__max();
+		transform: translate(-50%, -50%);
 	}
 }
 
+.b-case-study__slides--inner{
+	padding: $s-padding__mobile;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	line-height: 1.5;
+	height: 100%;
+	width: 100%;
+	@include s-responsive__mobile-up{
+		max-width: 1140px;
+		position: relative;
+	    left: 50%;
+	    transform: translateX(-50%);
+	}
+}
+
+.b-case-study__slides--close{
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	display: block;
+	z-index: 99;
+	color: #FFF;
+	font-size: 3rem;
+	cursor: pointer;
+}
+
+.b-case-study__slides--copy{
+	color: #FFF;
+}

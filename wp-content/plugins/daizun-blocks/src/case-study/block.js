@@ -52,6 +52,10 @@ registerBlockType( 'dz/case-study', {
 		alignment: {
 			type: "string",
 			default: "b-case-study__align--left"
+		},
+		sliderCopy: {
+			type: "string",
+			default: "slider copy"
 		}
 	},
 	parent: ['dz/case-studys'],
@@ -75,6 +79,9 @@ registerBlockType( 'dz/case-study', {
 		};
 		const dateChange = (newText) => {
 			setAttributes({ date: newText });			
+		};
+		const sliderCopyChange = (newText) => {
+			setAttributes({ sliderCopy: newText });			
 		};
 		const imgChange = ( newImg ) => {
 			let imgURL = newImg.sizes.full.url;
@@ -110,7 +117,9 @@ registerBlockType( 'dz/case-study', {
 					</div>
 				</div>
 				<div className="b-case-study__slides">
-					<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
+					<div className="b-case-study__slides--inner">
+						<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
+					</div>
 				</div>				
 				<InspectorControls>
 					<hr style={{border:'2px solid black'}}/>
@@ -145,6 +154,13 @@ registerBlockType( 'dz/case-study', {
 						/>
 					</Panel>
 					<hr style={{border:'2px solid black'}}/>
+					<Panel className="panel-group" header="Slider copy">					
+						<RichText
+							value={attributes.sliderCopy}
+							onChange={sliderCopyChange}
+						/>
+					</Panel>
+					<hr style={{border:'2px solid black'}}/>
 				</InspectorControls>		
 			</div>			
 		);
@@ -164,7 +180,7 @@ registerBlockType( 'dz/case-study', {
 	save: ( {attributes} ) => {	
 		return (
 			<div className={`b-case-study ${attributes.alignment}`}>
-				<div className="b-case-study__inner">
+				<div className="b-case-study__inner" data-toggle-case>
 					<div className="b-case-study__thumbnail">
 						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
 					</div>
@@ -182,7 +198,34 @@ registerBlockType( 'dz/case-study', {
 					</div>
 				</div>
 				<div className="b-case-study__slides">
-					<InnerBlocks.Content />
+					<div className="b-case-study__slides--inner">
+						<div data-toggle-case className="b-case-study__slides--close">
+							<svg xmlns="http://www.w3.org/2000/svg" width="25.707" height="25.707" viewBox="0 0 25.707 25.707">
+							  <g id="Group_350" data-name="Group 350" transform="translate(-332.646 -21.646)">
+							    <line id="Line_3" data-name="Line 3" x2="25" y2="25" transform="translate(333 22)" fill="none" stroke="#fff" stroke-width="1"/>
+							    <line id="Line_12" data-name="Line 12" y1="24" x2="24" transform="translate(334 22)" fill="none" stroke="#fff" stroke-width="1"/>
+							  </g>
+							</svg>
+						</div>
+						<InnerBlocks.Content />
+						<div className="b-case-study__slides--copy">
+							<RichText.Content
+								value={attributes.sliderCopy}
+							/>
+						</div>
+						<div className="b-case-study__slides--controls">
+							<div data-case-prev className="b-case-study__slides--prev">
+								<svg xmlns="http://www.w3.org/2000/svg" width="53.334" height="105.254" viewBox="0 0 53.334 105.254">
+								  <path id="Path_369" data-name="Path 369" d="M125.156,1398.5l-52.273,52.273,52.273,52.273" transform="translate(-72.176 -1398.146)" fill="none" stroke="#fcf7f7" stroke-width="1"/>
+								</svg>
+							</div>
+							<div data-case-next className="b-case-study__slides--next">
+								<svg xmlns="http://www.w3.org/2000/svg" width="53.334" height="105.254" viewBox="0 0 53.334 105.254">
+								  <path id="Path_370" data-name="Path 370" d="M125.156,1398.5l-52.273,52.273,52.273,52.273" transform="translate(125.51 1503.4) rotate(180)" fill="none" stroke="#fcf7f7" stroke-width="1"/>
+								</svg>
+							</div>
+						</div>
+					</div>
 				</div>		
 			</div>
 		);

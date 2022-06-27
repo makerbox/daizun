@@ -6,7 +6,7 @@
 	top: 0;
 	width: 100%;
 	opacity: 0;
-	padding: 0 1rem;
+	padding: 0 2rem;
 	display: flex;
 	text-align: center;
 	&.is-current{
@@ -16,6 +16,9 @@
 		position: relative;
 	}
 	@include s-responsive__mobile-up{
+		padding: 0 5rem;
+	}
+	@include s-responsive__tablet-up{
 		padding: 0 3rem;
 	}
 }

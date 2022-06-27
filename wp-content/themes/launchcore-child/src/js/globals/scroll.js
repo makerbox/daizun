@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 	function goToPos(targetPos) {
 		gsap.to(window, {
-			scrollTo: {y: targetPos - 50, autoKill: false},
+			scrollTo: {y: targetPos, autoKill: false},
 			duration: .5
 		});
 	}

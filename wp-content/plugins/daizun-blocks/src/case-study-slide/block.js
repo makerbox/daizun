@@ -34,10 +34,6 @@ registerBlockType( 'dz/case-study-slide', {
 		__( 'dz' ),
 	],
 	attributes: {
-		description: {
-			type: "string",
-			default: "description"
-		},
 		imgURL: {
 			type: "string"
 		},
@@ -61,9 +57,6 @@ registerBlockType( 'dz/case-study-slide', {
 	edit: ( {attributes, setAttributes} ) => {
 		
 
-		const descriptionChange = (newText) => {
-			setAttributes({ description: newText });			
-		};
 		const imgChange = ( newImg ) => {
 			let imgURL = newImg.sizes.full.url;
 			let imgID = newImg.id.toString();
@@ -75,17 +68,9 @@ registerBlockType( 'dz/case-study-slide', {
 
 		return (
 			<div className="b-case-study-slide">
-				<div className="b-case-study-slide__inner">
-					<div className="b-case-study-slide__image">
-						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
-					</div>
-					<div className="b-case-study-slide__description">
-						<RichText
-							onChange={descriptionChange}
-							value={attributes.description}
-						/>
-					</div>
-				</div>			
+				<div className="b-case-study-slide__image">
+					<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
+				</div>
 				<InspectorControls>
 					<hr style={{border:'2px solid black'}}/>
 					<Panel className="panel-group" header="Image">					
@@ -102,13 +87,6 @@ registerBlockType( 'dz/case-study-slide', {
 					            }
 					        }
 			            />
-					</Panel>
-					<hr style={{border:'2px solid black'}}/>
-					<Panel className="panel-group" header="Caption">
-						<RichText
-							onChange={descriptionChange}
-							value={attributes.description}
-						/>
 					</Panel>
 					<hr style={{border:'2px solid black'}}/>
 				</InspectorControls>					
@@ -130,15 +108,8 @@ registerBlockType( 'dz/case-study-slide', {
 	save: ( {attributes} ) => {	
 		return (
 			<div className="b-case-study-slide">
-				<div className="b-case-study-slide__inner">
-					<div className="b-case-study-slide__image">
-						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
-					</div>
-					<div className="b-case-study-slide__description">
-						<RichText.Content
-							value={attributes.description}
-						/>
-					</div>
+				<div className="b-case-study-slide__image">
+					<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
 				</div>
 			</div>
 		);

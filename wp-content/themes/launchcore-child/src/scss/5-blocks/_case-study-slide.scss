@@ -6,38 +6,32 @@
 	transition-timing-function: ease-in-out;
 	z-index: 1;
 	width: 100%;
-	height: 100%;
+	height: 50%;
+	padding: 7rem $s-padding__mobile;
 	opacity: 0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 	&.is-current{
 		left: 0;
 		opacity: 1;
 	}
-	&.is-old{
+	&.is-prev{
 		left: -100%;
+		opacity: 0;
+	}
+	&.is-next{
+		left: 100%;
 		opacity: 0;
 	}
 }
 
-.b-case-study-slide__inner{
-	padding: $s-padding__mobile;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	line-height: 1.5;
-	@include s-responsive__mobile-up{
-		max-width: 1140px;
-	}
-}
 
 .b-case-study-slide__image{
 	margin-bottom: 1rem;
-}
-
-.b-case-study-slide__description{
-	color: #FFF;
+	height: 100%;
+	width: 100%;
+	img{
+		width: 100%;
+		height: 100%;
+	    display: block;
+	    object-fit: contain;
+	}
 }
