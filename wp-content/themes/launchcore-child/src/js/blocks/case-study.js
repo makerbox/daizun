@@ -1,17 +1,20 @@
 $(document).ready(function(){
 
-	// // rip the sliders out from the smooth scroll container, so they can be fixed position
-	// let scrollWrapper = $(document).find('[data-smooth-wrapper]');
-	// $(document).find('.b-case-study__slides').each(function(index){
-	// 	let self = $(this);
-	// 	$(self.find('.b-case-study-slide')[0]).addClass("is-current");// set the first slide to current
-	// 	self.attr('data-slider-id', index); // give them each an ID to connect with their parent
-	// 	scrollWrapper.before(self);		
-	// })
-	// $(document).find('.b-case-study').each(function(index){
-	// 	let self = $(this);
-	// 	self.attr('data-slider-id', index); // give them each an ID to connect with their slider
-	// })
+
+	// rip the sliders out from the smooth scroll container, so they can be fixed position
+	let scrollWrapper = $(document).find('[data-smooth-wrapper]');
+	$(document).find('.b-case-study__slides').each(function(index){
+		let self = $(this);		
+		self.attr('data-slider-id', index); // give them each an ID to connect with their parent
+		self.find('[data-toggle-case]').attr('data-slider-id', index);
+		scrollWrapper.before(self);
+	})
+	$(document).find('.b-case-study').each(function(index){
+		let self = $(this);
+		self.attr('data-slider-id', index); // give them each an ID to connect with their slider
+		self.find('[data-toggle-case]').attr('data-slider-id', index);
+	})
+
 
 	// open / close the slider
 	$(document).on('click touchend', '[data-toggle-case]', function(e){
@@ -19,8 +22,8 @@ $(document).ready(function(){
 		e.stopPropagation();
 
 		let self = $(this);
-		let myParent = self.closest('.b-case-study');
-		let mySlider = $(myParent).find('.b-case-study__slides');
+		let myID = self.attr('data-slider-id');
+		let mySlider = $(document).find('.b-case-study__slides[data-slider-id="'+myID+'"]');
 		if(!mySlider.hasClass('is-open')){ 
 			mySlider.addClass('is-open');
 			// set the first slide to be current
