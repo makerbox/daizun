@@ -74,7 +74,7 @@ registerBlockType( 'dz/lead-stats', {
 		return (
 			<div className="b-lead-stats">
 				<div className="b-lead-stats__background">
-					<video loop autoplay muted>
+					<video autoplay="autoplay" loop="true" muted defaultmuted playsinline>
 						<source src={attributes.backgroundURL} type="video/mp4" />
 					</video>
 				</div>
@@ -130,7 +130,7 @@ registerBlockType( 'dz/lead-stats', {
 		return (
 			<div className="b-lead-stats panel">
 				<div className="b-lead-stats__background">
-					<video loop autoplay muted>
+					<video autoplay="autoplay" loop="true" muted defaultmuted playsinline>
 						<source src={attributes.backgroundURL} type="video/mp4" />
 					</video>
 				</div>

@@ -221,27 +221,30 @@ registerBlockType( 'dz/case-study', {
 							  </g>
 							</svg>
 						</div>
-						<InnerBlocks.Content />
+						<div className="b-case-study__slides--track">
+							<InnerBlocks.Content />
+							<div className="b-case-study__slides--controls">
+								<div data-case-prev className="b-case-study__slides--prev">
+									<svg xmlns="http://www.w3.org/2000/svg" width="53.334" height="105.254" viewBox="0 0 53.334 105.254">
+									  <path id="Path_369" data-name="Path 369" d="M125.156,1398.5l-52.273,52.273,52.273,52.273" transform="translate(-72.176 -1398.146)" fill="none" stroke="#fcf7f7" stroke-width="1"/>
+									</svg>
+								</div>
+								<div data-case-next className="b-case-study__slides--next">
+									<svg xmlns="http://www.w3.org/2000/svg" width="53.334" height="105.254" viewBox="0 0 53.334 105.254">
+									  <path id="Path_370" data-name="Path 370" d="M125.156,1398.5l-52.273,52.273,52.273,52.273" transform="translate(125.51 1503.4) rotate(180)" fill="none" stroke="#fcf7f7" stroke-width="1"/>
+									</svg>
+								</div>
+							</div>
+						</div>
 						<div className="b-case-study__slides--copy">
 							<RichText.Content
 								value={attributes.sliderCopy}
 							/>
 							<RichText.Content
 								value={attributes.list}
+								tagName="ul"
 							/>
-						</div>
-						<div className="b-case-study__slides--controls">
-							<div data-case-prev className="b-case-study__slides--prev">
-								<svg xmlns="http://www.w3.org/2000/svg" width="53.334" height="105.254" viewBox="0 0 53.334 105.254">
-								  <path id="Path_369" data-name="Path 369" d="M125.156,1398.5l-52.273,52.273,52.273,52.273" transform="translate(-72.176 -1398.146)" fill="none" stroke="#fcf7f7" stroke-width="1"/>
-								</svg>
-							</div>
-							<div data-case-next className="b-case-study__slides--next">
-								<svg xmlns="http://www.w3.org/2000/svg" width="53.334" height="105.254" viewBox="0 0 53.334 105.254">
-								  <path id="Path_370" data-name="Path 370" d="M125.156,1398.5l-52.273,52.273,52.273,52.273" transform="translate(125.51 1503.4) rotate(180)" fill="none" stroke="#fcf7f7" stroke-width="1"/>
-								</svg>
-							</div>
-						</div>
+						</div>						
 					</div>
 				</div>		
 			</div>
