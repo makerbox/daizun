@@ -6,8 +6,8 @@
 	transition-timing-function: ease-in-out;
 	z-index: 1;
 	width: 100%;
-	height: 50%;
-	padding: 7rem $s-padding__mobile;
+	height: 100%;
+	padding: 0rem 5rem 5rem 5rem;
 	opacity: 0;
 	&.is-current{
 		left: 0;
@@ -20,6 +20,10 @@
 	&.is-next{
 		left: 100%;
 		opacity: 0;
+	}
+	@include s-responsive__mobile-up{
+		height: 100%;
+		padding: 0 10rem 10rem 10rem;
 	}
 }
 

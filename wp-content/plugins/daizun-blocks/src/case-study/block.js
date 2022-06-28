@@ -49,6 +49,9 @@ registerBlockType( 'dz/case-study', {
 		imgID: {
 			type: "string"
 		},
+		list: {
+			type: "string"
+		},
 		alignment: {
 			type: "string",
 			default: "b-case-study__align--left"
@@ -82,6 +85,9 @@ registerBlockType( 'dz/case-study', {
 		};
 		const sliderCopyChange = (newText) => {
 			setAttributes({ sliderCopy: newText });			
+		};
+		const listChange = (newText) => {
+			setAttributes({ list: newText });			
 		};
 		const imgChange = ( newImg ) => {
 			let imgURL = newImg.sizes.full.url;
@@ -158,6 +164,14 @@ registerBlockType( 'dz/case-study', {
 						<RichText
 							value={attributes.sliderCopy}
 							onChange={sliderCopyChange}
+							multiline="p"
+						/>
+						<hr style={{border:'2px solid black'}}/>				
+						<RichText
+							onChange={listChange}
+							value={attributes.list}
+							tagName="ul"
+        					multiline="li"
 						/>
 					</Panel>
 					<hr style={{border:'2px solid black'}}/>
@@ -211,6 +225,9 @@ registerBlockType( 'dz/case-study', {
 						<div className="b-case-study__slides--copy">
 							<RichText.Content
 								value={attributes.sliderCopy}
+							/>
+							<RichText.Content
+								value={attributes.list}
 							/>
 						</div>
 						<div className="b-case-study__slides--controls">
