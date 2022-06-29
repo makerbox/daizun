@@ -4,17 +4,18 @@ $(document).ready(function(){
 	let smoother = ScrollSmoother.create({
 		content: '[data-smooth-content]',
  		effects: false,
- 		smooth: .5
+ 		smooth: 0
 	});
 
 
-
+	var isAnimating = false;
+	
 	// handle link to section (in b-dot section). Can't use normal link, because of scrollSmoother
 	$(document).on('click touchend', '.b-dot-background__paragraph a', function(e){
 		e.stopPropagation();
 		e.preventDefault();
 		let targetEl = $(document).find('#dz-section-5');
-		goToPos(targetEl, 1, "Power3.out");
+		goToPos(targetEl, 0, "none");
 	})
 
 
@@ -25,11 +26,21 @@ $(document).ready(function(){
 
 
 	function goToPos(target, myduration, myease) {
-		gsap.to(smoother, {
-			scrollTop: smoother.offset(target, "top top"),
-			duration: myduration,
-			ease: myease
-		});
+		if(!isAnimating){
+			isAnimating = true;
+			
+			gsap.to(smoother, {
+				scrollTop: smoother.offset(target),
+				duration: myduration,
+				ease: myease,
+				onComplete: stopAnim
+			});
+		};
+	}
+
+	function stopAnim(){
+		console.log('stop');
+		isAnimating = false;
 	}
 
 	const allPanels = $(document).find('.panel');
@@ -47,7 +58,7 @@ $(document).ready(function(){
 
 		ScrollTrigger.create({
 			trigger: nextPanel,
-			start: "top 95%",
+			start: "top 90%",
 			onEnter: () => goToPos(nextPanel, 1, "Power3.out")
 		});
 

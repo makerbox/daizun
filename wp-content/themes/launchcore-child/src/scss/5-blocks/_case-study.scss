@@ -93,9 +93,9 @@
 }
 
 .b-case-study__date{
-	font-size: 1.5rem;
+	font-size: 1rem;
 	margin-top: .5rem;
-	display: none;
+	// display: none;
 }
 
 .b-case-study__slides{
@@ -199,7 +199,7 @@
 	}
 	ul{
 		display: flex;
-		height: 4rem;
+		height: 5rem;
 		flex-direction: column;
 		flex-wrap: wrap;
 		align-items: flex-start;

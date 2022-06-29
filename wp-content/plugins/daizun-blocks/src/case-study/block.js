@@ -115,10 +115,7 @@ registerBlockType( 'dz/case-study', {
 							/>
 						</div>
 						<div className="b-case-study__date">
-							<RichText
-								onChange={dateChange}
-								value={attributes.date}
-							/>
+							Read more
 						</div>
 					</div>
 				</div>
@@ -194,7 +191,7 @@ registerBlockType( 'dz/case-study', {
 	save: ( {attributes} ) => {	
 		return (
 			<div className={`b-case-study ${attributes.alignment}`}>
-				<div className="b-case-study__inner" data-toggle-case>
+				<div className="b-case-study__inner">
 					<div className="b-case-study__thumbnail">
 						<img src={attributes.imgURL} className={`wp-image-${attributes.imgID}`} />
 					</div>
@@ -204,10 +201,8 @@ registerBlockType( 'dz/case-study', {
 								value={attributes.title}
 							/>
 						</div>
-						<div className="b-case-study__date">
-							<RichText.Content
-								value={attributes.date}
-							/>
+						<div data-toggle-case className="b-case-study__date">
+							Read more
 						</div>
 					</div>
 				</div>
