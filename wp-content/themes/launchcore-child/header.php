@@ -19,7 +19,7 @@
 				'theme_location' => 'main-menu'
 				) ); ?>	
 			</nav>
-			<div class="u-adaptive__mobile p-header__menu--toggle" data-nav-toggle>
+			<div class="p-header__mobile p-header__menu--toggle" data-nav-toggle>
 				<div class="p-header__menu--open">
 					<svg xmlns="http://www.w3.org/2000/svg" width="25" height="11" viewBox="0 0 25 11">
 					  <g id="Group_350" data-name="Group 350" transform="translate(-333 -21.5)">

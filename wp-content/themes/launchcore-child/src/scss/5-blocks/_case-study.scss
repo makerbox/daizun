@@ -87,7 +87,7 @@
 }
 .b-case-study__title, .b-case-study__date{
 	color: #D3FEFE;
-	font-size: 2.25rem;
+	font-size: 1.5rem;
 	font-family: serenity, sans-serif;
 	font-weight: 500;
 }
@@ -95,6 +95,7 @@
 .b-case-study__date{
 	font-size: 1.5rem;
 	margin-top: .5rem;
+	display: none;
 }
 
 .b-case-study__slides{

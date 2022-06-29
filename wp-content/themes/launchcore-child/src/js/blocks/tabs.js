@@ -4,7 +4,7 @@ $(document).ready(function(){
 		let self = $(this);
 		let myTitle = self.attr('data-tab-title');
 		let myButtons = $(document).find('[data-tab-buttons]');
-		let tabHTML = "<div class='b-tab__button' data-tab-title='"+myTitle+"'>"+myTitle+"</div>";
+		let tabHTML = '<div class="b-tab__button" data-tab-title="'+myTitle+'">'+myTitle+'</div>';
 		myButtons.append(tabHTML);
 	})
 	

@@ -12,7 +12,7 @@ $(document).ready(function(){
 		}
 	})
 
-	$(document).on('click touchend', '.menu-item', function(e){
+	$(document).on('click touchend', '.scroll-to', function(e){
 		let navbar = $(document).find('[data-nav-menu]');
 		navbar.removeClass('is-open');
 	})

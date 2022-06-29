@@ -13,7 +13,8 @@ $(document).ready(function(){
 	$(document).on('click touchend', '.b-dot-background__paragraph a', function(e){
 		e.stopPropagation();
 		e.preventDefault();
-		smoother.scrollTo("#case-studies", true);
+		let targetEl = $(document).find('#dz-section-5');
+		goToPos(targetEl, 1, "Power3.out");
 	})
 
 
@@ -23,11 +24,11 @@ $(document).ready(function(){
 
 
 
-	function goToPos(target) {
+	function goToPos(target, myduration, myease) {
 		gsap.to(smoother, {
 			scrollTop: smoother.offset(target, "top top"),
-			duration: 1,
-			ease: "power3.out"
+			duration: myduration,
+			ease: myease
 		});
 	}
 
@@ -46,8 +47,8 @@ $(document).ready(function(){
 
 		ScrollTrigger.create({
 			trigger: nextPanel,
-			start: "+=50 bottom",
-			onEnter: () => goToPos(nextPanel)
+			start: "top 95%",
+			onEnter: () => goToPos(nextPanel, 1, "Power3.out")
 		});
 
 		// let panel = $(this);
@@ -77,4 +78,33 @@ $(document).ready(function(){
 	})
 
 
+	// give each section an ID for the nav to use
+	$(document).find(".t-front-page>div").each(function(index){
+		$(this).attr('id', 'dz-section-'+index);
+	})
+
+	// handle nav click
+	$(document).on('click touchend', '.scroll-to a', function(e){
+		e.preventDefault();
+		e.stopPropagation();
+		if($(document).find('.t-font-page').length){ // front page just scroll to section
+			let self = $(this);
+			let target = self.attr('href');
+			let targetEl = $(document).find(target);
+			goToPos(targetEl);
+		}else{
+			let self = $(this);
+			let target = self.attr('href');
+			location = '../' + target;
+		}
+		
+		
+	})
+
+	// if # section in URL then scroll to section
+	if(window.location.href.indexOf('#') != -1){
+		let target = window.location.href.split("#")[1];
+		let targetEl = $(document).find('#'+target);
+		goToPos(targetEl, 0, "none");
+	};
 })

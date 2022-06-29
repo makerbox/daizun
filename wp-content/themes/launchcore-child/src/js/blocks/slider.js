@@ -80,4 +80,7 @@ $(document).ready(function(){
 		});
 	}
 
+	//reconfigure CTA to contact page
+	$(document).find('.b-slider__cta').attr('href', '/contact');
+
 })
