@@ -1,7 +1,9 @@
 				<footer class="p-footer">
-					<div class="p-footer__headline">
-						<a href="../contact" style="color: #FFF; text-decoration: none;">Connect with us</a>
-					</div>
+					<?php if(is_front_page()){ ?>
+						<div class="p-footer__headline">
+							<a href="../contact" style="color: #FFF; text-decoration: none;">Connect with us</a>
+						</div>
+					<?php }; ?>
 					<div class="p-footer__address">
 						53 Davies Street<br/>
 						Mayfair<br/>

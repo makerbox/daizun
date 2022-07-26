@@ -38,7 +38,7 @@
 	position: absolute;
 	top: 50%;
 	left: 0;
-	width: 100%;
+	width: 100vw;
 	transform: translateY(-50%);
 	display: flex;
 	justify-content: space-between;
@@ -75,6 +75,7 @@
 .b-slider__slides{
 	position: relative;
 	width: 100%;
+	height: 16rem;
 	overflow: hidden;
 	margin-bottom: 2rem;
 	@include s-responsive__mobile-up{
@@ -124,6 +125,9 @@
 	text-decoration: none;
 	strong{
 		margin-left: .5rem;
+		.b-slider__color--light &{
+			color: #d00d1c;
+		}
 	}
 	.b-slider__color--dark &{
 		background: #D00D1C;

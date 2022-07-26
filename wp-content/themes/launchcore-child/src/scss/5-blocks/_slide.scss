@@ -6,15 +6,16 @@
 	top: 0;
 	width: 100%;
 	opacity: 0;
-	padding: 0 2rem;
+	padding: 0 1rem;
 	display: flex;
 	text-align: center;
+	height: 100%;
 	&.is-current{
 		opacity: 1;
 	}
-	&.is-tallest{
-		position: relative;
-	}
+	// &.is-tallest{
+	// 	position: relative;
+	// }
 	@include s-responsive__mobile-up{
 		padding: 0 5rem;
 	}
@@ -25,6 +26,11 @@
 
 .b-slide__inner{
 	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	@include s-responsive__mobile-up{
 		max-width: 47rem;
 		left: 50%;
