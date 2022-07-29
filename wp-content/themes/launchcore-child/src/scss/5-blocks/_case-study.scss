@@ -94,7 +94,7 @@
 .b-case-study__date{
 	font-size: 1rem;
 	margin-top: .5rem;
-	// display: none;
+	display: inline-block;
 	cursor: pointer;
 }
 
@@ -209,16 +209,15 @@
 .b-case-study__slides--copy{
 	color: #FFF;
 	flex-grow: 1;
+	width: 100%;
 	p{
 		margin-bottom: 1rem;
 	}
 	ul{
-		display: flex;
-		height: 5rem;
-		flex-direction: column;
-		flex-wrap: wrap;
-		align-items: flex-start;
-		justify-content: flex-start;
+		height: 100%;
+		@include s-responsive__mobile-up{
+			columns: 2;
+		}
 	}
 	li{
 		margin-right: 1rem;

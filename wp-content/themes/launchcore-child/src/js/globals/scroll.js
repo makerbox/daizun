@@ -58,7 +58,7 @@ $(document).ready(function(){
 
 		ScrollTrigger.create({
 			trigger: nextPanel,
-			start: "top 90%",
+			start: "top 80%",
 			onEnter: () => goToPos(nextPanel, 1, "Power3.out")
 		});
 
