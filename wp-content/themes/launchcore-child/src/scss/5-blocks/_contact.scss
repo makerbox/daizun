@@ -22,6 +22,8 @@
 		flex-direction: row;
 		flex-wrap: nowrap;
 		@include s-responsive__max();
+		left: auto;
+		transform: none;
 	}
 }
 
