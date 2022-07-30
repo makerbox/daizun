@@ -18,10 +18,18 @@
 	&.is-prev{
 		left: -100%;
 		opacity: 0;
+		.is-single &{
+			left: 0;
+			opacity: 1;
+		}
 	}
 	&.is-next{
 		left: 100%;
 		opacity: 0;
+		.is-single &{
+			left: 0;
+			opacity: 1;
+		}
 	}
 	@include s-responsive__mobile-up{
 		height: 100%;

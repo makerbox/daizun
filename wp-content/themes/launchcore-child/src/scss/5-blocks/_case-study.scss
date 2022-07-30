@@ -131,6 +131,9 @@
 	height: 1.5rem;
 	cursor: pointer;
 	z-index: 9;
+	.is-single &{
+		display: none;
+	}
 	>div{
 		width: 2rem;
 		height: 2rem;

@@ -8,11 +8,19 @@ $(document).ready(function(){
 		self.attr('data-slider-id', index); // give them each an ID to connect with their parent
 		self.find('[data-toggle-case]').attr('data-slider-id', index);
 		scrollWrapper.before(self);
+
+		// hide prev next if only one slide
+		let mySlides = self.find(".b-case-study-slide");
+		if(mySlides.length <= 1){
+			self.addClass('is-single');
+		};
 	})
+
 	$(document).find('.b-case-study').each(function(index){
 		let self = $(this);
 		self.attr('data-slider-id', index); // give them each an ID to connect with their slider
 		self.find('[data-toggle-case]').attr('data-slider-id', index);
+		
 	})
 
 
