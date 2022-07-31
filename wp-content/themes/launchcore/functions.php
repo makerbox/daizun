@@ -115,13 +115,7 @@ return $count;
 }
 }
 
-// insert favicon
-function blog_favicon() { 
-	$favicon = get_template_directory_uri() . '/src/assets/FbF_Favicon.jpg';
-	?>
-	<link rel="shortcut icon" href="<?php echo $favicon; ?>" > 
-<?php }
-add_action('wp_head', 'blog_favicon');
+
 
 // get Bootstrap
 // function get_bootstrap(){
