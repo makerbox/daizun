@@ -2,7 +2,21 @@ $(document).ready(function(){
 
 	// only jack scroll on desktop
 	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-	  console.log('no scrolljacking');
+ 		// give each section an ID for the nav to use
+		$(document).find(".t-front-page>div").each(function(index){
+			$(this).attr('id', 'dz-section-'+index);
+		})
+	  // handle link to section (in b-dot section). Can't use normal link, because of scrollSmoother
+		$(document).on('click touchend', '.b-dot-background__paragraph a', function(e){
+			e.stopPropagation();
+			e.preventDefault();
+
+			let targetEl = $(document).find('#dz-section-5');
+			let targetPos = targetEl.offset().top;
+			$('html, body').animate({
+	        	scrollTop: targetPos
+	    	}, 0);
+		})
 	}else{
 		  
 
